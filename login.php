@@ -6,13 +6,9 @@
 	// Include config file
 	//require_once "config.php";
 
-	$servername = "localhost";
-	$user = "root";
-	$pass = "";
-	$db = "fyp_viva_scheduling";
+	include "connection.php";
 
-	//Making Connection
-	$conn = new mysqli ($servername,$user, $pass, $db);
+	$conn = connect_db();
 
 	//verify connection 
 	if ($conn->connect_error)
@@ -29,8 +25,9 @@
 	if($_SERVER["REQUEST_METHOD"] == "POST")
 	{
         // Prepare a select statement
-       $sql="SELECT * FROM  $ToU WHERE  email='$email' and password='$password'";
-
+       $sql="SELECT * FROM  $ToU WHERE  email='$email' and pass='$password'";
+		echo $sql;
+		//die();
        $result = $conn -> query($sql);
 
         if(mysqli_num_rows($result)==1)
@@ -74,11 +71,11 @@
 	            // Redirect Admin to Home Page
 	            header("location: adm_index.html");
 	        }
-	        else
-	        {
-	            echo"<script>alert('Error login')</script>";
-	            //echo"<script>window.open('login.html','_self')</script>";
-	        }
+		}
+		else
+		{
+			echo"<script>alert('Error login');</script>";
+			//echo"<script>window.open('login.html','_self')</script>";
 		}   
 	}
 

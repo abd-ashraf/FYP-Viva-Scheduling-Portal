@@ -29,6 +29,8 @@
 
 		$result = $conn -> query($sql);
 
+		$data = $result->fetch_array(MYSQLI_ASSOC);
+
         if(mysqli_num_rows($result)==1)
         {
 
@@ -40,18 +42,19 @@
 
         	if($ToU == 'user_stu')
         	{
-	            echo "Welcome Student <br>";                     
-	            
+				echo "Welcome Student <br>";   
+				
+				
 	            // Redirect Student to Home Page
 	            header("location: stu_index.php");    			
         	}
 	        else if($ToU == 'user_sup')
 	        {
-	            //session_start();
-
-	            // Store data in session variables
-	            //$_SESSION["username"] = $username;
-	            //$_SESSION["password"] = $password;  
+				$_SESSION["name"] = $data["sup_name"];
+				$_SESSION["age"] = $data["sup_age"];
+				$_SESSION["dob"] = $data["sup_dob"];
+				$_SESSION["under_supervision"] = $data["groups_under_supervision"];
+				$_SESSION["upcomming_viva"] = $data["upcomming_viva"];
 
 	            echo "Welcome Supervisor <br>";                          
 	            

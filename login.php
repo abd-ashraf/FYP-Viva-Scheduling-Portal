@@ -24,26 +24,26 @@
 
 	if($_SERVER["REQUEST_METHOD"] == "POST")
 	{
-        // Prepare a select statement
-       $sql="SELECT * FROM  $ToU WHERE  email='$email' and pass='$password'";
-		echo $sql;
-		//die();
-       $result = $conn -> query($sql);
+			// Prepare a select statement
+		$sql="SELECT * FROM  $ToU WHERE  email='$email' and pass='$password'";
+
+		$result = $conn -> query($sql);
 
         if(mysqli_num_rows($result)==1)
         {
+
+			session_start();
+			//Store data in session variables
+			$_SESSION["email"] = $email;
+			$_SESSION["password"] = $password;  
+			$_SESSION["user_type"] = $ToU; 
+
         	if($ToU == 'user_stu')
         	{
-	            //session_start();
-
-	            // Store data in session variables
-	            //$_SESSION["username"] = $username;
-	            //$_SESSION["password"] = $password;     
-
 	            echo "Welcome Student <br>";                     
 	            
 	            // Redirect Student to Home Page
-	            header("location: stu_index.html");    			
+	            header("location: stu_index.php");    			
         	}
 	        else if($ToU == 'user_sup')
 	        {
@@ -56,7 +56,7 @@
 	            echo "Welcome Supervisor <br>";                          
 	            
 	            // Redirect Supervisor to Home Page
-	            header("location: sup_index.html");	
+	            header("location: sup_index.php");	
 	        }
 	        else if($ToU == 'user_adm')
 	        {

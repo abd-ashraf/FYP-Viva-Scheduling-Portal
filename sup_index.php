@@ -1,3 +1,16 @@
+<?php
+
+session_start();
+
+if (!isset($_SESSION["email"]) || $_SESSION["user_type"] != 'user_sup')
+{
+    header("location: index.html");
+}
+
+// echo $_SESSION["user_type"];
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -425,7 +438,7 @@
                                                 </div>
                                             </div>
                                             <div class="account-dropdown__footer">
-                                                <a href="#">
+                                                <a href="logout.php">
                                                     <i class="zmdi zmdi-power"></i>Logout</a>
                                             </div>
                                         </div>

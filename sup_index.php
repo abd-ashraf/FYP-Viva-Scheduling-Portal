@@ -88,8 +88,8 @@ if (!isset($_SESSION["email"]) || $_SESSION["user_type"] != 'user_sup')
                             </ul>
                         </li>
                         <li>
-                            <a href="chart.html">
-                                <i class="fas fa-chart-bar"></i>Charts</a>
+                            <a href="Student Info">
+                                <i class="fas fa-chart-bar"></i>stu_info.php</a>
                         </li>
                         <li>
                             <a href="table.html">
@@ -196,8 +196,8 @@ if (!isset($_SESSION["email"]) || $_SESSION["user_type"] != 'user_sup')
                             </ul>
                         </li>
                         <li>
-                            <a href="chart.html">
-                                <i class="fas fa-chart-bar"></i>Charts</a>
+                            <a href="stu_info.php">
+                                <i class="fas fa-chart-bar"></i>Student Info</a>
                         </li>
                         <li>
                             <a href="table.html">

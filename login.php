@@ -8,7 +8,7 @@
 
 	include "connection.php";
 
-	$conn = connect_db();
+	$conn = OpenCon();
 
 	//verify connection 
 	if ($conn->connect_error)

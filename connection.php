@@ -1,6 +1,6 @@
 <?php
 
-function connect_db()
+function OpenCon()
 {
     $servername = "localhost";
 	$user = "root";

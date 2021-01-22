@@ -1,3 +1,16 @@
+<?php
+
+session_start();
+
+if(!isset($_SESSION["email"]) || $_SESSION["user_type"] != 'user_stu')
+{
+    header("location: index.html");
+}
+
+// echo $_SESSION["user_type"];
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -51,7 +64,7 @@
                         <img src="images/icon/avatar-big-01.jpg" alt="John Doe" />
                     </div>
                     <h4 class="name">john doe</h4>
-                    <a href="#">Sign out</a>
+                    <a href="logout.php">Sign out</a>
                 </div>
                 <nav class="navbar-sidebar2">
                     <ul class="list-unstyled navbar__list">

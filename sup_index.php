@@ -1,3 +1,16 @@
+<?php
+
+session_start();
+
+if (!isset($_SESSION["email"]) || $_SESSION["user_type"] != 'user_sup')
+{
+    header("location: index.html");
+}
+
+// echo $_SESSION["user_type"];
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -394,7 +407,11 @@
                                             <img src="images/icon/avatar-01.jpg" alt="John Doe" />
                                         </div>
                                         <div class="content">
-                                            <a class="js-acc-btn" href="#">john doe</a>
+                                            <a class="js-acc-btn" href="#">
+                                                <?php
+                                                echo $_SESSION["name"];
+                                                ?>
+                                            </a>
                                         </div>
                                         <div class="account-dropdown js-dropdown">
                                             <div class="info clearfix">
@@ -425,7 +442,7 @@
                                                 </div>
                                             </div>
                                             <div class="account-dropdown__footer">
-                                                <a href="#">
+                                                <a href="logout.php">
                                                     <i class="zmdi zmdi-power"></i>Logout</a>
                                             </div>
                                         </div>
@@ -460,8 +477,12 @@
                                                 <i class="zmdi zmdi-account-o"></i>
                                             </div>
                                             <div class="text">
-                                                <h2>10368</h2>
-                                                <span>members online</span>
+                                                <h2>
+                                                    <?php
+                                                    echo $_SESSION["under_supervision"];
+                                                    ?>
+                                                </h2>
+                                                <span>Under Supervision</span>
                                             </div>
                                         </div>
                                         <div class="overview-chart">
@@ -475,11 +496,15 @@
                                     <div class="overview__inner">
                                         <div class="overview-box clearfix">
                                             <div class="icon">
-                                                <i class="zmdi zmdi-shopping-cart"></i>
+                                                <i class="zmdi zmdi-airplay"></i>
                                             </div>
                                             <div class="text">
-                                                <h2>388,688</h2>
-                                                <span>items solid</span>
+                                                <h2>
+                                                    <?php
+                                                    echo $_SESSION["upcomming_viva"];
+                                                    ?>
+                                                </h2>
+                                                <span>Upcomming Vivas</span>
                                             </div>
                                         </div>
                                         <div class="overview-chart">
@@ -494,7 +519,7 @@
                                         <div class="overview-box clearfix">
                                             <div class="icon">
                                                 <i class="zmdi zmdi-calendar-note"></i>
-                                            </div>
+                                            </div><br>
                                             <div class="text">
                                                 <h2>1,086</h2>
                                                 <span>this week</span>

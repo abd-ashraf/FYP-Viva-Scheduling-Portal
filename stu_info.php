@@ -10,7 +10,7 @@
     <meta name="keywords" content="au theme template">
 
     <!-- Title Page-->
-    <title>Charts</title>
+    <title>Student Info</title>
 
     <!-- Fontfaces CSS-->
     <link href="css/font-face.css" rel="stylesheet" media="all">
@@ -33,9 +33,162 @@
     <!-- Main CSS-->
     <link href="css/theme.css" rel="stylesheet" media="all">
 
+
+    <!-- Added after for table-->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+        <style>
+        body {
+            color: #404E67;
+            background: #F5F7FA;
+            font-family: 'Open Sans', sans-serif;
+        }
+        .table-wrapper {
+            width: 90%;
+            margin: 30px auto;
+            background: #fff;
+            padding: 20px;  
+            box-shadow: 0 1px 1px rgba(0,0,0,.05);
+        }
+        .table-title {
+            padding-bottom: 10px;
+            margin: 0 0 10px;
+        }
+        .table-title h2 {
+            margin: 6px 0 0;
+            font-size: 22px;
+        }
+        .table-title .add-new {
+            float: right;
+            height: 50px;
+            font-weight: bold;
+            font-size: 12px;
+            text-shadow: none;
+            min-width: 100px;
+            border-radius: 50px;
+            line-height: 13px;
+        }
+        .table-title .add-new i {
+            margin-right: 4px;
+        }
+        table.table {
+            table-layout: fixed;
+        }
+        table.table tr th, table.table tr td {
+            border-color: #e9e9e9;
+        }
+        table.table th i {
+            font-size: 13px;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+        table.table th:last-child {
+            width: 100px;
+        }
+        table.table td a {
+            cursor: pointer;
+            display: inline-block;
+            margin: 0 5px;
+            min-width: 24px;
+        }    
+        table.table td a.add {
+            color: #27C46B;
+        }
+        table.table td a.edit {
+            color: #FFC107;
+        }
+        table.table td a.delete {
+            color: #E34724;
+        }
+        table.table td i {
+            font-size: 19px;
+        }
+        table.table td a.add i {
+            font-size: 24px;
+            margin-right: -1px;
+            position: relative;
+            top: 3px;
+        }    
+        table.table .form-control {
+            height: 32px;
+            line-height: 32px;
+            box-shadow: none;
+            border-radius: 2px;
+        }
+        table.table .form-control.error {
+            border-color: #f50000;
+        }
+        table.table td .add {
+            display: inline;
+        }
+        </style>
+        <script>
+        $(document).ready(function(){
+            $('[data-toggle="tooltip"]').tooltip();
+            var actions = $("table td:last-child").html();
+            // Append table with add row form on add new button click
+            $(".add-new").click(function(){
+                $(this).attr("disabled", "disabled");
+                var index = $("table tbody tr:last-child").index();
+                var row = '<tr>' +
+                    '<td><input type="text" class="form-control" name="name" id="name"></td>' +
+                    '<td><input type="text" class="form-control" name="department" id="department"></td>' +
+                    '<td><input type="text" class="form-control" name="phone" id="phone"></td>' +
+                    '<td>' + actions + '</td>' +
+                '</tr>';
+                $("table").append(row);     
+                $("table tbody tr").eq(index + 1).find(".add, .edit").toggle();
+                $('[data-toggle="tooltip"]').tooltip();
+            });
+            // Add row on add button click
+            $(document).on("click", ".add", function(){
+                var empty = false;
+                var input = $(this).parents("tr").find('input[type="text"]');
+                input.each(function()
+                                    {
+                                        if(!$(this).val())
+                                        {
+                                            $(this).addClass("error");
+                                            empty = true;
+                                        } 
+                                        else
+                                        {
+                                            $(this).removeClass("error");
+                                        }
+                                    }
+                            );
+
+                $(this).parents("tr").find(".error").first().focus();
+                if(!empty)
+                {
+                    input.each(function()
+                                        {
+                                            $(this).parent("td").html($(this).val());
+                                        }
+                                );         
+
+                    $(this).parents("tr").find(".add, .edit").toggle();
+                    $(".add-new").removeAttr("disabled");
+                }       
+            });
+
+            // Delete row on delete button click
+            $(document).on("click", ".delete", function(){
+                $(this).parents("tr").remove();
+                $(".add-new").removeAttr("disabled");
+            });
+        });
+
+
+        </script>
 </head>
 
-<body class="animsition">
+<body class="animsition" >
     <div class="page-wrapper">
         <!-- HEADER MOBILE-->
         <header class="header-mobile d-block d-lg-none">
@@ -184,7 +337,7 @@
                         </li>
                         <li class="active">
                             <a href="chart.html">
-                                <i class="fas fa-chart-bar"></i>Charts</a>
+                                <i class="fas fa-chart-bar"></i>Student Info</a>
                         </li>
                         <li>
                             <a href="table.html">
@@ -440,95 +593,75 @@
 
             <!-- MAIN CONTENT-->
             <div class="main-content">
-                <div class="section__content section__content--p30">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="au-card m-b-30">
-                                    <div class="au-card-inner">
-                                        <h3 class="title-2 m-b-40">Yearly Sales</h3>
-                                        <canvas id="sales-chart"></canvas>
+
+<?php
+
+    include 'connection.php';
+    $conn = OpenCon();
+?>
+
+                <!-- BootStrap Table-->
+                <div class="container-lg">
+                    <div class="table-responsive">
+                        <div class="table-wrapper">
+                            <div class="table-title">
+                                <div class="row">
+                                    <div class="col-sm-10"><h2><b>Student Details</b></h2></div>
+                                    <div class="col-sm-2">
+                            <a class="add" title="Add" href="stu_add.php" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-6">
-                                <div class="au-card m-b-30">
-                                    <div class="au-card-inner">
-                                        <h3 class="title-2 m-b-40">Team Commits</h3>
-                                        <canvas id="team-chart"></canvas>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="au-card m-b-30">
-                                    <div class="au-card-inner">
-                                        <h3 class="title-2 m-b-40">Bar chart</h3>
-                                        <canvas id="barChart"></canvas>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="au-card m-b-30">
-                                    <div class="au-card-inner">
-                                        <h3 class="title-2 m-b-40">Rader chart</h3>
-                                        <canvas id="radarChart"></canvas>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="au-card m-b-30">
-                                    <div class="au-card-inner">
-                                        <h3 class="title-2 m-b-40">Line Chart</h3>
-                                        <canvas id="lineChart"></canvas>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="au-card m-b-30">
-                                    <div class="au-card-inner">
-                                        <h3 class="title-2 m-b-40">Doughut Chart</h3>
-                                        <canvas id="doughutChart"></canvas>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="au-card m-b-30">
-                                    <div class="au-card-inner">
-                                        <h3 class="title-2 m-b-40">Pie Chart</h3>
-                                        <canvas id="pieChart"></canvas>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="au-card m-b-30">
-                                    <div class="au-card-inner">
-                                        <h3 class="title-2 m-b-40">Polar Chart</h3>
-                                        <canvas id="polarChart"></canvas>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="au-card m-b-30">
-                                    <div class="au-card-inner">
-                                        <h3 class="title-2 m-b-40">Single Bar Chart</h3>
-                                        <canvas id="singelBarChart"></canvas>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="copyright">
-                                    <p>Copyright © 2018 Colorlib. All rights reserved. Template by <a href="https://colorlib.com">Colorlib</a>.</p>
-                                </div>
-                            </div>
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Name</th>
+                                        <th>City</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+<?php
+
+    // Prepare a select statement
+    $sql="SELECT * FROM user_stu";
+
+    $result = $conn->query($sql);
+
+    if(mysqli_num_rows($result) > 0)
+    {
+        while($rows = $result->fetch_assoc())
+        {
+            ?>
+                <tbody>
+                    <tr>
+                        <td><?php echo $rows['stu_ID']; ?></td>
+                        <td><?php echo $rows['stu_name']; ?></td>
+                        <td><?php echo $rows['stu_city']; ?></td>
+                        <td>
+                            <a class="edit" title="Edit" href="stu_edit.php?id=<?php echo $rows['stu_ID']; ?>" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a> 
+
+                            <a class="delete" title="Delete" href="stu_upd.php?id=<?php echo $rows['stu_ID']; ?>&type=delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                        </td>
+                    </tr>
+                </tbody>
+                <?php
+        }
+    }   
+    else
+    {
+        echo"<script>alert('Error. No Data in Table')</script>";
+    }
+
+?>
+
+                            </table>
                         </div>
                     </div>
-                </div>
+                </div>     
+                <!-- END MAIN CONTENT-->
             </div>
-            <!-- END MAIN CONTENT-->
-        </div>
-        <!-- END PAGE CONTAINER-->
+            <!-- END PAGE CONTAINER-->
 
     </div>
 

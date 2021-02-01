@@ -1,60 +1,60 @@
 <!DOCTYPE html>
 <?php
 
-    $stu1 = $_POST['stu1'];
-    $stu2 = $_POST['stu2'];
-    $group_ID = $_POST['group-id'];
-    $city = $_POST['city'];
+    // $stu1 = $_POST['stu1'];
+    // $stu2 = $_POST['stu2'];
+    // $group_ID = $_POST['group-id'];
+    // $city = $_POST['city'];
 
-    if ($stu1 == NULL || $stu2 == NULL || $group_ID == NULL || $city === '0')
-    {
-        header("location: schedule-viva.php?error=no-input");
-        die();
-    }
-    if ($stu1 == $stu2)
-    {
-        header("location: schedule-viva.php?error=same-id");
-        die();
-    }
+    // if ($stu1 == NULL || $stu2 == NULL || $group_ID == NULL || $city === '0')
+    // {
+    //     header("location: schedule-viva.php?error=no-input");
+    //     die();
+    // }
+    // if ($stu1 == $stu2)
+    // {
+    //     header("location: schedule-viva.php?error=same-id");
+    //     die();
+    // }
 
-    include 'connection.php';
+    // include 'connection.php';
 
-    $con = OpenCon();
-    $sql1 = "select * from user_stu where stu_ID = $stu1;";
-    $result1 = $con->query($sql1);
-    $row1 = array();
-    $row2 = array();
-    if (mysqli_num_rows($result1) == 1)
-    {
-        $row1 = $result1->fetch_assoc();   
-    }
-    else {
-        header ("location: schedule-viva.php?error=sql-error");
-        die();
-    }
+    // $con = OpenCon();
+    // $sql1 = "select * from user_stu where stu_ID = $stu1;";
+    // $result1 = $con->query($sql1);
+    // $row1 = array();
+    // $row2 = array();
+    // if (mysqli_num_rows($result1) == 1)
+    // {
+    //     $row1 = $result1->fetch_assoc();   
+    // }
+    // else {
+    //     header ("location: schedule-viva.php?error=sql-error");
+    //     die();
+    // }
 
-    $sql2 = "select * from user_stu where stu_ID = $stu2;";
-    $con = OpenCon();
-    $result2 = $con->query($sql2);
-    if (mysqli_num_rows($result2) == 1)
-    {
-        $row2 = $result2->fetch_assoc();  
-    }
-    else {
-        header ("location: schedule-viva.php?error=sql-error");
-        die();
-    }
-    if ($row1['stu_city'] != $row2['stu_city'])
-    {
-        header ("location: schedule-viva.php?error=city-mismatch");
-        die();
-    }
-    if ($row1['stu_city'] != $city)
-    {
-        $stu_city = $row1['stu_city'];
-        header ("location: schedule-viva.php?error=wrong-city&stu_city=$stu_city");
-        die();
-    }
+    // $sql2 = "select * from user_stu where stu_ID = $stu2;";
+    // $con = OpenCon();
+    // $result2 = $con->query($sql2);
+    // if (mysqli_num_rows($result2) == 1)
+    // {
+    //     $row2 = $result2->fetch_assoc();  
+    // }
+    // else {
+    //     header ("location: schedule-viva.php?error=sql-error");
+    //     die();
+    // }
+    // if ($row1['stu_city'] != $row2['stu_city'])
+    // {
+    //     header ("location: schedule-viva.php?error=city-mismatch");
+    //     die();
+    // }
+    // if ($row1['stu_city'] != $city)
+    // {
+    //     $stu_city = $row1['stu_city'];
+    //     header ("location: schedule-viva.php?error=wrong-city&stu_city=$stu_city");
+    //     die();
+    // }
 ?>
 <html lang="en">
 
@@ -508,27 +508,17 @@
                                     <div class="card-header">Viva Group</div>
                                     <div class="card-body">
                                         <div class="card-title">
-                                            <h3 class="text-center title-2">Enter Student's Info</h3>
+                                            <h3 class="text-center title-2">Viva Scheduler</h3>
                                         </div>
                                         <hr>
                                         <form action="" method="post" novalidate="novalidate">
-                                            <!-- <div class="form-group">
-                                                <label for="cc-payment" class="control-label mb-1">1st Student ID</label>
-                                                <input id="cc-pament" name="cc-payment" type="text" class="form-control" aria-required="true" aria-invalid="false">
+                                            <div class="row form-group">
+                                                <div class="col-12">
+                                                        <label for="cc-exp" class="control-label mb-1">Group ID</label>
+                                                        <input id="cc-exp" name="cc-exp" type="text" class="form-control"
+                                                            placeholder="Group ID" autocomplete="off" requierd> 
+                                                </div>
                                             </div>
-                                            <div class="form-group has-success">
-                                                <label for="cc-name" class="control-label mb-1">Name on card</label>
-                                                <input id="cc-name" name="cc-name" type="text" class="form-control cc-name valid" data-val="true" data-val-required="Please enter the name on card"
-                                                    autocomplete="cc-name" aria-required="true" aria-invalid="false" aria-describedby="cc-name-error">
-                                                <span class="help-block field-validation-valid" data-valmsg-for="cc-name" data-valmsg-replace="true"></span>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="cc-number" class="control-label mb-1">Card number</label>
-                                                <input id="cc-number" name="cc-number" type="tel" class="form-control cc-number identified visa" value="" data-val="true"
-                                                    data-val-required="Please enter the card number" data-val-cc-number="Please enter a valid card number"
-                                                    autocomplete="cc-number">
-                                                <span class="help-block" data-valmsg-for="cc-number" data-valmsg-replace="true"></span>
-                                            </div> -->
                                             <div class="row">
                                                 <div class="col-6">
                                                     <div class="form-group">

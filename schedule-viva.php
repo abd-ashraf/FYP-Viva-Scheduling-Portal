@@ -533,7 +533,7 @@
                                             <h3 class="text-center title-2">Enter Student's Info</h3>
                                         </div>
                                         <hr>
-                                        <form action="grouping.php" method="post" novalidate="novalidate">
+                                        <form action="dummy.php" method="post" novalidate="novalidate">
                                             <div class="row">
                                                 <div class="col-6">
                                                     <div class="form-group">

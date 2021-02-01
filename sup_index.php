@@ -522,7 +522,7 @@ if (!isset($_SESSION["email"]) || $_SESSION["user_type"] != 'user_sup')
                                             </div><br>
                                             <div class="text">
                                                 <h2>1,086</h2>
-                                                <span>this week</span>
+                                                <span>Pending Evaluations</span>
                                             </div>
                                         </div>
                                         <div class="overview-chart">

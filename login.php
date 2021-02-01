@@ -22,6 +22,11 @@
 	$password = $_POST['password'];
 	$ToU = $_POST['ToU'];
 
+	if ($ToU == '0') {
+		echo"<script>alert('Error login');</script>";
+		die();
+	}
+
 	if($_SERVER["REQUEST_METHOD"] == "POST")
 	{
 			// Prepare a select statement

@@ -11,15 +11,15 @@
 	$dob=$_POST['stu_dob'];
 
 	    // Prepare a select statement
-	    $sql = "INSERT INTO user_stu (stu_ID, stu_name, email, pass, stu_city, stu_dob)
-				VALUES ('$id', '$name', '$email', '$pass', '$city', '$dob')";
+	    $sql = "UPDATE user_stu SET stu_ID='$id', stu_name='$name', email='$email', pass='$pass', stu_city='$city', stu_dob='$dob'
+				WHERE stu_ID='$id';";
 
 	    $result = $conn->query($sql);
 
 	    if($result)
 	    {
-	    	echo "Data Added Successfully";
-	    	//header("location:stu_info.php");
+	    	echo "Updated Successfully";
+	    	header("location:stu_index.php");
 	    }
 	    else
 	    {

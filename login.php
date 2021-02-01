@@ -39,22 +39,34 @@
         if(mysqli_num_rows($result)==1)
         {
 
-			session_start();
-			//Store data in session variables
-			$_SESSION["email"] = $email;
-			$_SESSION["password"] = $password;  
-			$_SESSION["user_type"] = $ToU; 
-
         	if($ToU == 'user_stu')
         	{
+				session_start();
+				//Store data in session variables
+				$_SESSION["email"] = $email;
+				$_SESSION["password"] = $password;  
+				$_SESSION["user_type"] = $ToU; 
+
+				$_SESSION["name"] = $data["stu_name"];
+				$_SESSION["id"] = $data["stu_ID"];
+				$_SESSION["age"] = $data["stu_age"];
+				$_SESSION["dob"] = $data["stu_dob"];
+				$_SESSION["under_supervision"] = $data["groups_under_supervision"];
+				$_SESSION["upcomming_viva"] = $data["upcomming_viva"];
+
 				echo "Welcome Student <br>";   
-				
 				
 	            // Redirect Student to Home Page
 	            header("location: stu_index.php");    			
         	}
 	        else if($ToU == 'user_sup')
 	        {
+				session_start();
+				//Store data in session variables
+				$_SESSION["email"] = $email;
+				$_SESSION["password"] = $password;  
+				$_SESSION["user_type"] = $ToU; 
+
 				$_SESSION["name"] = $data["sup_name"];
 				$_SESSION["age"] = $data["sup_age"];
 				$_SESSION["dob"] = $data["sup_dob"];
@@ -68,16 +80,22 @@
 	        }
 	        else if($ToU == 'user_adm')
 	        {
-	            //session_start();
-
-	            // Store data in session variables
-	            //$_SESSION["username"] = $username;
-	            //$_SESSION["password"] = $password;    
+				session_start();
+				//Store data in session variables
+				$_SESSION["email"] = $email;
+				$_SESSION["password"] = $password;  
+				$_SESSION["user_type"] = $ToU; 
+				
+				$_SESSION["name"] = $data["adm_name"];
+				$_SESSION["age"] = $data["adm_age"];
+				$_SESSION["dob"] = $data["adm_dob"];
+				$_SESSION["under_supervision"] = $data["groups_under_supervision"];
+				$_SESSION["upcomming_viva"] = $data["upcomming_viva"]; 
 
 	            echo "Welcome Admin <br>";                        
 	            
 	            // Redirect Admin to Home Page
-	            header("location: adm_index.html");
+	            header("location: adm_index.php");
 	        }
 		}
 		else

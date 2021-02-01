@@ -2,7 +2,7 @@
 
 session_start();
 
-if (!isset($_SESSION["email"]) || $_SESSION["user_type"] != 'user_stu')
+if (!isset($_SESSION["email"]) || $_SESSION["user_type"] != 'user_adm')
 {
     header("location: index.html");
 }
@@ -23,7 +23,7 @@ if (!isset($_SESSION["email"]) || $_SESSION["user_type"] != 'user_stu')
     <meta name="keywords" content="au theme template">
 
     <!-- Title Page-->
-    <title>Student Dashboard</title>
+    <title>Dashboard</title>
 
     <!-- Fontfaces CSS-->
     <link href="css/font-face.css" rel="stylesheet" media="all">
@@ -70,16 +70,24 @@ if (!isset($_SESSION["email"]) || $_SESSION["user_type"] != 'user_stu')
                 <div class="container-fluid">
                     <ul class="navbar-mobile__list list-unstyled">
                         <li>
-                            <a href="stu_index.php">
-                                <i class="fas fa-tachometer-alt"></i>Student Dashboard</a>
+                            <a href="adm_index.php">
+                                <i class="fas fa-tachometer-alt"></i>Admin Index Dashboard</a>
                         </li>
                         <li>
-                            <a href="stu_upd_profile.php?id=<?php echo $_SESSION['id']; ?>">
-                                <i class="fas fa-address-book"></i>Update Profile</a>
+                            <a href="stu_infoo.php">
+                                <i class="fas fa-address-book"></i>Student Info</a>
                         </li>
                         <li>
                             <a href="add_stu.php">
                                 <i class="fas fa-user-plus"></i>Add Student</a>
+                        </li>
+                        <li>
+                            <a href="sup_info.php">
+                                <i class="far fa-address-book"></i>Supervisor Info</a>
+                        </li>
+                        <li>
+                            <a href="add_sup.php">
+                                <i class="fas fa-user-plus"></i>Add Supervisor</a>
                         </li>
                     </ul>
                 </div>
@@ -98,16 +106,24 @@ if (!isset($_SESSION["email"]) || $_SESSION["user_type"] != 'user_stu')
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
                         <li>
-                            <a href="stu_index.php">
-                                <i class="fas fa-tachometer-alt"></i>Student Dashboard</a>
+                            <a href="adm_index.php">
+                                <i class="fas fa-tachometer-alt"></i>Admin Index Dashboard</a>
                         </li>
                         <li>
-                            <a href="stu_upd_profile.php?id=<?php echo $_SESSION['id']; ?>">
-                                <i class="fas fa-address-book"></i>Update Profile</a>
+                            <a href="stu_infoo.php">
+                                <i class="fas fa-address-book"></i>Student Info</a>
                         </li>
                         <li>
                             <a href="add_stu.php">
                                 <i class="fas fa-user-plus"></i>Add Student</a>
+                        </li>
+                        <li>
+                            <a href="sup_info.php">
+                                <i class="far fa-address-book"></i>Supervisor Info</a>
+                        </li>
+                        <li>
+                            <a href="add_sup.php">
+                                <i class="fas fa-user-plus"></i>Add Supervisor</a>
                         </li>
                     </ul>
                 </nav>

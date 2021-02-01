@@ -498,6 +498,32 @@
                             </div>
                         <?php
                         }
+                    if($_GET['error'] == 'city-mismatch'){
+                        ?>
+                            <div class="row col-12">
+                            <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show">
+                                                    <span class="badge badge-pill badge-danger">Error!</span>
+                                                    Students study center don't match. Please ensure students in a group have same study centers assigned.
+                                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>   
+                            </div>
+                        <?php
+                        }
+                    if($_GET['error'] == 'wrong-city'){
+                        ?>
+                            <div class="row col-12">
+                            <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show">
+                                                    <span class="badge badge-pill badge-danger">Error!</span>
+                                                    Incorrect city selected. Students syudy center is in <?php echo $_GET['stu_city'] ?>.
+                                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>   
+                            </div>
+                        <?php
+                        }
                     
                 } ?>
                                 <div class="card">
@@ -508,23 +534,6 @@
                                         </div>
                                         <hr>
                                         <form action="grouping.php" method="post" novalidate="novalidate">
-                                            <!-- <div class="form-group">
-                                                <label for="cc-payment" class="control-label mb-1">1st Student ID</label>
-                                                <input id="cc-pament" name="cc-payment" type="text" class="form-control" aria-required="true" aria-invalid="false">
-                                            </div>
-                                            <div class="form-group has-success">
-                                                <label for="cc-name" class="control-label mb-1">Name on card</label>
-                                                <input id="cc-name" name="cc-name" type="text" class="form-control cc-name valid" data-val="true" data-val-required="Please enter the name on card"
-                                                    autocomplete="cc-name" aria-required="true" aria-invalid="false" aria-describedby="cc-name-error">
-                                                <span class="help-block field-validation-valid" data-valmsg-for="cc-name" data-valmsg-replace="true"></span>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="cc-number" class="control-label mb-1">Card number</label>
-                                                <input id="cc-number" name="cc-number" type="tel" class="form-control cc-number identified visa" value="" data-val="true"
-                                                    data-val-required="Please enter the card number" data-val-cc-number="Please enter a valid card number"
-                                                    autocomplete="cc-number">
-                                                <span class="help-block" data-valmsg-for="cc-number" data-valmsg-replace="true"></span>
-                                            </div> -->
                                             <div class="row">
                                                 <div class="col-6">
                                                     <div class="form-group">

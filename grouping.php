@@ -20,14 +20,40 @@
     include 'connection.php';
 
     $con = OpenCon();
-    $sql = "select * from user_stu where stu_ID = $stu1 or stu_ID = $stu2;";
-    $result = $con->query($sql);
-    if (mysqli_num_rows($result) >= 1)
+    $sql1 = "select * from user_stu where stu_ID = $stu1;";
+    $result1 = $con->query($sql1);
+    $row1 = array();
+    $row2 = array();
+    if (mysqli_num_rows($result1) == 1)
     {
-
+        $row1 = $result1->fetch_assoc();   
     }
     else {
         header ("location: schedule-viva.php?error=sql-error");
+        die();
+    }
+
+    $sql2 = "select * from user_stu where stu_ID = $stu2;";
+    $con = OpenCon();
+    $result2 = $con->query($sql2);
+    if (mysqli_num_rows($result2) == 1)
+    {
+        $row2 = $result2->fetch_assoc();  
+    }
+    else {
+        header ("location: schedule-viva.php?error=sql-error");
+        die();
+    }
+    if ($row1['stu_city'] != $row2['stu_city'])
+    {
+        header ("location: schedule-viva.php?error=city-mismatch");
+        die();
+    }
+    if ($row1['stu_city'] != $city)
+    {
+        $stu_city = $row1['stu_city'];
+        header ("location: schedule-viva.php?error=wrong-city&stu_city=$stu_city");
+        die();
     }
 ?>
 <html lang="en">

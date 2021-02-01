@@ -70,26 +70,16 @@ if (!isset($_SESSION["email"]) || $_SESSION["user_type"] != 'user_sup')
                 <div class="container-fluid">
                     <ul class="navbar-mobile__list list-unstyled">
                         <li class="has-sub">
-                            <a class="js-arrow" href="#">
+                            <a class="js-arrow" href="sup_index.php">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
-                            <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
-                                <li>
-                                    <a href="sup_index.html">Dashboard 1</a>
-                                </li>
-                                <li>
-                                    <a href="index2.html">Dashboard 2</a>
-                                </li>
-                                <li>
-                                    <a href="index3.html">Dashboard 3</a>
-                                </li>
-                                <li>
-                                    <a href="index4.html">Dashboard 4</a>
-                                </li>
-                            </ul>
                         </li>
                         <li>
-                            <a href="Student Info">
-                                <i class="fas fa-chart-bar"></i>stu_info.php</a>
+                            <a href="stu_info.php">
+                                <i class="fas fa-chart-bar"></i>Schedule Viva</a>
+                        </li>
+                        <li>
+                            <a href="stu_info.php">
+                                <i class="fas fa-chart-bar"></i>Student Info</a>
                         </li>
                         <li>
                             <a href="table.html">
@@ -178,9 +168,9 @@ if (!isset($_SESSION["email"]) || $_SESSION["user_type"] != 'user_sup')
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
                         <li class="active has-sub">
-                            <a class="js-arrow" href="#">
+                            <a class="js-arrow" href="sup_index.php">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
-                            <ul class="list-unstyled navbar__sub-list js-sub-list">
+                            <!-- <ul class="list-unstyled navbar__sub-list js-sub-list">
                                 <li>
                                     <a href="sup_index.html">Dashboard 1</a>
                                 </li>
@@ -193,7 +183,11 @@ if (!isset($_SESSION["email"]) || $_SESSION["user_type"] != 'user_sup')
                                 <li>
                                     <a href="index4.html">Dashboard 4</a>
                                 </li>
-                            </ul>
+                            </ul> -->
+                        </li>
+                        <li>
+                            <a href="schedule-viva.php">
+                                <i class="fas fa-chart-bar"></i>Schedule Viva</a>
                         </li>
                         <li>
                             <a href="stu_info.php">
@@ -463,8 +457,8 @@ if (!isset($_SESSION["email"]) || $_SESSION["user_type"] != 'user_sup')
                             <div class="col-md-12">
                                 <div class="overview-wrap">
                                     <h2 class="title-1">overview</h2>
-                                    <button class="au-btn au-btn-icon au-btn--blue">
-                                        <i class="zmdi zmdi-plus"></i>add item</button>
+                                    <button class="au-btn au-btn-icon au-btn--blue" onclick="window.location.href='schedule-viva.php';">
+                                        <i class="zmdi zmdi-calendar"></i>Schedule Viva</button>
                                 </div>
                             </div>
                         </div>

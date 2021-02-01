@@ -1,0 +1,105 @@
+{
+    "city": [
+    {
+        "name": "faisalabad",
+        "lon": 73.079109,
+        "lat": 31.418715
+    },
+    {
+        "name": "lahore",
+        "lon": 74.329376,
+        "lat": 31.582045
+    },
+    {
+        "name": "islamabad",
+        "lon": 73.084488,
+        "lat": 33.738045
+    },
+    {
+        "name": "karachi",
+        "lon": 66.990501,
+        "lat": 24.860966
+    },
+    {
+        "name": "peshawar",
+        "lon": 71.560135,
+        "lat": 34.025917
+    },
+    {
+        "name": "sargodha", 
+        "lon": 72.669128,
+        "lat": 32.082466
+    },
+    {
+        "name": "abbottabad",
+        "lon": 73.221497,
+        "lat": 34.168751
+    },
+    {
+        "name": "multan",
+        "lon": 71.492157,
+        "lat": 30.181459
+    },
+    {
+        "name": "quetta",
+        "lon": 66.996452,
+        "lat": 30.183270
+    },
+    {
+        "name": "gwadar",
+        "lon": 62.322498,
+        "lat": 25.126389
+    },
+    {
+        "name": "mardan",
+        "lon": 72.029800,
+        "lat": 34.206123
+    },
+    {
+        "name": "hyderabad",
+        "lon": 68.3578,
+        "lat": 25.3960
+    },
+    {
+        "name": "sukkur",
+        "lon": 68.836899,
+        "lat": 27.713926
+    },
+    {
+        "name": "larkana",
+        "lon": 68.215134,
+        "lat": 27.563993
+    },
+    {
+        "name": "bannu", 
+        "lon": 70.604164,
+        "lat": 32.986111
+    },
+    {
+        "name": "bahawalpur",
+        "lon": 71.257240,
+        "lat": 29.143644
+    },
+    {
+        "name": "murree",
+        "lon": 73.3943,
+        "lat": 33.9070
+    },
+    {
+        "name": "gilgit",
+        "lon": 74.308334,
+        "lat": 35.920834
+    },
+    {
+        "name": "layyah",
+        "lon": 70.939934,
+        "lat": 30.964750
+    },
+    {
+        "name": "sialkot",
+        "lon": 74.536110,
+        "lat": 32.497223
+    }
+    
+]
+}

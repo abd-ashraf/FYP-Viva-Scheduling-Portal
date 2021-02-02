@@ -324,13 +324,13 @@ if (!isset($_SESSION["email"]) || $_SESSION["user_type"] != 'user_stu')
 							    if($rows = $result->fetch_assoc())
 							    {
 							    	?>
-                                        <form action="stu_upd_profile_php.php" method="post" class="form-horizontal">
+                                        <form action="stu_edit_php.php" method="post" class="form-horizontal">
                                             <div class="row form-group">
                                                 <div class="col col-md-3">  
                                                     <label for="stu_ID" class=" form-control-label">Student ID</label>
                                                 </div>
                                                 <div class="col-12 col-md-9">
-                                                    <input type="text" id="stu_ID" name="stu_ID" class="form-control" value='<?php echo $rows['stu_ID'] ?>'>
+                                                    <input type="text" id="stu_ID" name="stu_ID" class="form-control" value='<?php echo $rows['stu_ID'] ?>' readonly>
                                                 </div>
                                             </div>
                                             <br>
@@ -371,6 +371,7 @@ if (!isset($_SESSION["email"]) || $_SESSION["user_type"] != 'user_stu')
                                                 </div>
                                                 <div class="col-12 col-md-9">
                                                 <select id="locality-dropdown" name="stu_city" id="stu_city" class="form-control">
+                                                    <option value='<?php echo $rows['stu_city'] ?>'><?php echo $rows['stu_city'] ?></option>
                                                     
                                                 </select>
                                                 </div>

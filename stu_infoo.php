@@ -475,8 +475,8 @@ if (!isset($_SESSION["email"]) || $_SESSION["user_type"] != 'user_adm')
                         <div class="table-wrapper">
                             <div class="table-title">
                                 <div class="row">
-                                    <div class="col-sm-10"><h2><b>Student Details</b></h2></div>
-                                    <div class="col-sm-2">
+                                    <div class="col-sm-11"><h2><b>Student Details</b></h2></div>
+                                    <div class="col-sm-1">
                             <a class="add" title="Add" href="add_stu.php" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
                                     </div>
                                 </div>
@@ -486,7 +486,10 @@ if (!isset($_SESSION["email"]) || $_SESSION["user_type"] != 'user_adm')
                                     <tr>
                                         <th>ID</th>
                                         <th>Name</th>
-                                        <th>City</th>
+                                        <th>Study Centre</th>
+                                        <th>DoB</th>
+                                        <th>Group ID</th>
+                                        <th>Supervisor ID</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -507,6 +510,9 @@ if (!isset($_SESSION["email"]) || $_SESSION["user_type"] != 'user_adm')
                         <td><?php echo $rows['stu_ID']; ?></td>
                         <td><?php echo $rows['stu_name']; ?></td>
                         <td><?php echo $rows['stu_city']; ?></td>
+                        <td><?php echo $rows['stu_dob']; ?></td>
+                        <td><?php echo $rows['group_ID']; ?></td>
+                        <td><?php echo $rows['supervisor_ID']; ?></td>
                         <td>
                             <a class="edit" title="Edit" href="stu_edit.php?id=<?php echo $rows['stu_ID']; ?>" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a> 
 

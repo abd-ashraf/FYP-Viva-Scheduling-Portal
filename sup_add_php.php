@@ -10,15 +10,14 @@
 	$dob=$_POST['sup_dob'];
 
 	    // Prepare a select statement
-	    $sql = "INSERT INTO user_stu (sup_ID, sup_name, email, pass, stu_dob)
+	    $sql = "INSERT INTO user_sup (sup_ID, sup_name, email, pass, sup_dob)
 				VALUES ('$id', '$name', '$email', '$pass', '$dob')";
 
 	    $result = $conn->query($sql);
 
 	    if($result)
 	    {
-	    	echo "Data Added Successfully";
-	    	//header("location:stu_info.php");
+	    	header("location:add_sup.php");
 	    }
 	    else
 	    {

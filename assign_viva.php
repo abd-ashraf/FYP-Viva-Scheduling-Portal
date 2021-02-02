@@ -16,7 +16,6 @@ $group_ID = $_POST['group_ID'];
 
 send_mail($group_ID, $stu1, $stu2, $viva_location, $date, $time, $con);
 
-
 $sql = "insert into viva (viva_location, viva_date, viva_time, supervisor_ID, group_ID) VALUES('$viva_location', '$date', '$time', '$supID', '$group_ID');";
 
 $result = $con->query($sql);

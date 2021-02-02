@@ -2,13 +2,13 @@
     "city": [
     {
         "name": "faisalabad",
-        "lon": 73.079109,
-        "lat": 31.418715
+        "lon": 73.1350,
+        "lat": 31.4504
     },
     {
         "name": "lahore",
-        "lon": 74.329376,
-        "lat": 31.582045
+        "lon": 74.3587,
+        "lat": 31.5204
     },
     {
         "name": "islamabad",
@@ -22,8 +22,8 @@
     },
     {
         "name": "peshawar",
-        "lon": 71.560135,
-        "lat": 34.025917
+        "lon": 71.6861,
+        "lat": 34.0740
     },
     {
         "name": "sargodha", 

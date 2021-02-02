@@ -105,10 +105,6 @@ if (!isset($_SESSION["email"]) || $_SESSION["user_type"] != 'user_stu')
                             <a href="stu_upd_profile.php?id=<?php echo $_SESSION['id']; ?>">
                                 <i class="fas fa-address-book"></i>Update Profile</a>
                         </li>
-                        <li>
-                            <a href="add_stu.php">
-                                <i class="fas fa-user-plus"></i>Add Student</a>
-                        </li>
                     </ul>
                 </nav>
             </div>

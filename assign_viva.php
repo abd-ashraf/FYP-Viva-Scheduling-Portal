@@ -1,6 +1,10 @@
 <?php
-
 session_start();
+
+include 'connection.php';
+$con = OpenCon();
+
+include 'mail.php';
 
 $stu1 = $_POST['stu1'];
 $stu2 = $_POST['stu2'];
@@ -10,8 +14,8 @@ $time = $_POST['viva_time'];
 $viva_location = $_POST['viva_location'];
 $group_ID = $_POST['group_ID'];
 
-include 'connection.php';
-$con = OpenCon();
+send_mail($group_ID, $stu1, $stu2, $viva_location, $date, $time, $con);
+
 
 $sql = "insert into viva (viva_location, viva_date, viva_time, supervisor_ID, group_ID) VALUES('$viva_location', '$date', '$time', '$supID', '$group_ID');";
 

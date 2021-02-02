@@ -524,6 +524,19 @@
                             </div>
                         <?php
                         }
+                    if($_GET['error'] == 'viva-exists'){
+                        ?>
+                            <div class="row col-12">
+                            <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show">
+                                                    <span class="badge badge-pill badge-danger">Error!</span>
+                                                    The selected student's viva has already been scheduled.
+                                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>   
+                            </div>
+                        <?php
+                        }
                     
                 } ?>
                                 <div class="card">

@@ -477,7 +477,7 @@ if (!isset($_SESSION["email"]) || $_SESSION["user_type"] != 'user_adm')
                                 <div class="row">
                                     <div class="col-sm-10"><h2><b>Student Details</b></h2></div>
                                     <div class="col-sm-2">
-                            <a class="add" title="Add" href="stu_add.php" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
+                            <a class="add" title="Add" href="add_stu.php" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
                                     </div>
                                 </div>
                             </div>

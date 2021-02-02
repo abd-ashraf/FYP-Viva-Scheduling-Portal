@@ -1,5 +1,7 @@
 <?php
 
+$error = $_GET['error'];
+
 session_start();
 
 if (!isset($_SESSION["email"]) || $_SESSION["user_type"] != 'user_adm')
@@ -317,7 +319,51 @@ if (!isset($_SESSION["email"]) || $_SESSION["user_type"] != 'user_adm')
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
                         <div class="row">
+                            
+                            
                             <div class="col-lg-12">
+                            <?php
+                                if ($error == 'id-exists')
+                                {
+                                    ?> 
+                                    <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show">
+                                            <span class="badge badge-pill badge-danger">Error</span>
+                                            Given student ID already exixts in the database.
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                    <?php
+                                }
+                                ?>
+                            <?php
+                                if ($error == 'email-exists')
+                                {
+                                    ?> 
+                                    <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show">
+                                            <span class="badge badge-pill badge-danger">Error</span>
+                                            Given student email already exixts in the database.
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                    <?php
+                                }
+                                ?>
+                            <?php
+                                if ($error == 'success')
+                                {
+                                    ?> 
+                                    <div class="sufee-alert alert with-close alert-primary alert-dismissible fade show">
+                                            <span class="badge badge-pill badge-primary">Success</span>
+                                            Student record has successfully been added.
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                    <?php
+                                }
+                                ?>
                                 <div class="card">
                                     <div class="card-header">
                                         <strong>Student</strong> Form

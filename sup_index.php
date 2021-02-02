@@ -23,7 +23,7 @@ if (!isset($_SESSION["email"]) || $_SESSION["user_type"] != 'user_sup')
     <meta name="keywords" content="au theme template">
 
     <!-- Title Page-->
-    <title>Dashboard</title>
+    <title>Supervisor Dashboard</title>
 
     <!-- Fontfaces CSS-->
     <link href="css/font-face.css" rel="stylesheet" media="all">

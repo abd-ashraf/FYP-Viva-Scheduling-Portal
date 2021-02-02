@@ -115,7 +115,7 @@ if (!isset($_SESSION["email"]) || $_SESSION["user_type"] != 'user_adm')
                         </li>
                         <li>
                             <a href="add_stu.php">
-                                <i class="fas fa-user-plus"></i>Add Student</a>
+                                <i class="fas fa-user"></i>Add Student</a>
                         </li>
                         <li>
                             <a href="sup_info.php">
@@ -123,7 +123,7 @@ if (!isset($_SESSION["email"]) || $_SESSION["user_type"] != 'user_adm')
                         </li>
                         <li>
                             <a href="add_sup.php">
-                                <i class="fas fa-user-plus"></i>Add Supervisor</a>
+                                <i class="fas fa-user"></i>Add Supervisor</a>
                         </li>
                     </ul>
                 </nav>

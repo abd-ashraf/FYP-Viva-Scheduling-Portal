@@ -1,13 +1,13 @@
 <?php
 
-function send_mail($group_ID, $stu1, $stu2, $viva_location, $date, $time){
+function send_mail($group_ID, $stu1, $stu2, $viva_location, $date, $time, $con){
     ini_set( 'display_errors', 1 );
     error_reporting( E_ALL );
 
     $from = "f180300@cfd.nu.edu.pk";
 
-    $stu1email=ret_email($stu1);
-    $stu2email=ret_email($stu2);
+    $stu1email=ret_email($stu1,$con);
+    $stu2email=ret_email($stu2,$con);
 
 	$to = "$stu1email , $stu2email";
 
@@ -59,9 +59,7 @@ function send_mail($group_ID, $stu1, $stu2, $viva_location, $date, $time){
     }
 }
 
-function ret_email($std){
-	include 'connection.php';
-	$con = OpenCon();
+function ret_email($std, $con){
 
 	// Prepare a select statement
     $sql="SELECT * FROM user_stu WHERE $std=stu_ID;";

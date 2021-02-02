@@ -645,8 +645,7 @@
                                                     <div class="form-group">
                                                         <label for="cc-exp" class="control-label mb-1">1st Student ID</label>
                                                         <input id="stuID1" name="stuID1" type="text" class="form-control"
-                                                             value="<?php echo $stu1 ?>" autocomplete="off"
-                                                             required readonly> 
+                                                             value="<?php echo $stu1 ?>" autocomplete="off"requierd disabled> 
                                                     </div>
                                                 </div>
                                                 <div class="col-6">
@@ -654,7 +653,7 @@
                                                         <label for="stuID2" class="control-label mb-1">2nd Student ID</label>
                                                         <input id="cc-exp" name="stuID2" type="text" class="form-control"
                                                             value="<?php echo $stu2 ?>" autocomplete="off"
-                                                            required readonly> 
+                                                            requierd disabled> 
                                                     </div>
                                                 </div>
                                             </div>
@@ -662,7 +661,7 @@
                                                 <div class="col-12">
                                                         <label for="cc-exp" class="control-label mb-1">Group ID</label>
                                                         <input id="cc-exp" name="group_ID" type="text" class="form-control"
-                                                            value="<?php echo $group_ID ?>" autocomplete="off" required readonly> 
+                                                            value="<?php echo $group_ID ?>" autocomplete="off" requierd readonly> 
                                                 </div>
                                             </div>
                                             <div class="form-group">

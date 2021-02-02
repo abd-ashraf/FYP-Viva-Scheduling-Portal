@@ -486,6 +486,9 @@ if (!isset($_SESSION["email"]) || $_SESSION["user_type"] != 'user_adm')
                                     <tr>
                                         <th>ID</th>
                                         <th>Name</th>
+                                        <th>DoB</th>
+                                        <th>Groups Under Supervision</th>
+                                        <th>Upcoming Vivas</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -505,6 +508,9 @@ if (!isset($_SESSION["email"]) || $_SESSION["user_type"] != 'user_adm')
                     <tr>
                         <td><?php echo $rows['sup_ID']; ?></td>
                         <td><?php echo $rows['sup_name']; ?></td>
+                        <td><?php echo $rows['sup_dob']; ?></td>
+                        <td><?php echo $rows['groups_under_supervision']; ?></td>
+                        <td><?php echo $rows['upcomming_viva']; ?></td>
                         <td>
                             <a class="edit" title="Edit" href="sup_edit.php?id=<?php echo $rows['sup_ID']; ?>" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a> 
 

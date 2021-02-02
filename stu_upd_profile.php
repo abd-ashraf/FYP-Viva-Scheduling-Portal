@@ -45,8 +45,14 @@ if (!isset($_SESSION["email"]) || $_SESSION["user_type"] != 'user_stu')
 
     <!-- Main CSS-->
     <link href="css/theme.css" rel="stylesheet" media="all">
+    <script
+  src="https://code.jquery.com/jquery-3.5.1.js"
+  integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+  crossorigin="anonymous"></script>
 
 </head>
+
+<script src="populate-city.js"></script>
 
 <body class="animsition">
     <div class="page-wrapper">
@@ -364,11 +370,8 @@ if (!isset($_SESSION["email"]) || $_SESSION["user_type"] != 'user_stu')
                                                     <label for="stu_city" class=" form-control-label">Select City</label>
                                                 </div>
                                                 <div class="col-12 col-md-9">
-                                                <select name="stu_city" id="stu_city" class="form-control">
-                                                    <option value="0">Please select</option>
-                                                    <option value="1">Option #1</option>
-                                                    <option value="2">Option #2</option>
-                                                    <option value="3">Option #3</option>
+                                                <select id="locality-dropdown" name="stu_city" id="stu_city" class="form-control">
+                                                    
                                                 </select>
                                                 </div>
                                             </div>

@@ -162,13 +162,14 @@
     <link href="css/theme.css" rel="stylesheet" media="all">
     <style type="text/css">
     #map {
-  height: 100%;
+        height: 100%;
 }
 
 /* Optional: Makes the sample page fill the window. */
 #map_container {
     height: 500px;
     width: 500px;
+    background-color: green;
 }
     </style>
     <script>
@@ -618,8 +619,8 @@
                                                         </select>
                                                 </div>
                                             </div>
-                                            <div id="map_container">
-                                                <div id="map">
+                                            <div id="map_container" >
+                                                <div id="map" class="d-flex justify-content-center">
                                                 
                                                 </div>
                                             </div>
@@ -644,15 +645,15 @@
                                                 <div class="col-6">
                                                     <div class="form-group">
                                                         <label for="cc-exp" class="control-label mb-1">1st Student ID</label>
-                                                        <input id="stuID1" name="stuID1" type="text" class="form-control"
-                                                             value="<?php echo $stu1 ?>" autocomplete="off" requierd disabled> 
+                                                        <input id="stuID1" name="stu1" type="text" class="form-control"
+                                                             value="<?php echo $stu1 ?>" autocomplete="off" requierd readonly> 
                                                     </div>
                                                 </div>
                                                 <div class="col-6">
                                                     <div class="form-group">
                                                         <label for="stuID2" class="control-label mb-1">2nd Student ID</label>
-                                                        <input id="cc-exp" name="stuID2" type="text" class="form-control"
-                                                            value="<?php echo $stu2 ?>" autocomplete="off" requierd disabled> 
+                                                        <input id="cc-exp" name="stu2" type="text" class="form-control"
+                                                            value="<?php echo $stu2 ?>" autocomplete="off" requierd readonly> 
                                                     </div>
                                                 </div>
                                             </div>

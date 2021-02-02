@@ -67,6 +67,7 @@
 				$_SESSION["password"] = $password;  
 				$_SESSION["user_type"] = $ToU; 
 
+				$_SESSION["id"] = $data["sup_ID"];
 				$_SESSION["name"] = $data["sup_name"];
 				$_SESSION["age"] = $data["sup_age"];
 				$_SESSION["dob"] = $data["sup_dob"];

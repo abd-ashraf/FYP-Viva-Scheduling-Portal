@@ -7,6 +7,8 @@ $(document).ready(function(){
         opt.value= index;
         opt.innerHTML = 'Select a study center'; 
 
+        console.log("here");
+
         // then append it to the select element
         dropdown.appendChild(opt);
 

@@ -18,9 +18,9 @@
     //     die();
     // }
 
-    // include 'connection.php';
+    include 'connection.php';
 
-    // $con = OpenCon();
+    $con = OpenCon();
     // $sql1 = "select * from user_stu where stu_ID = $stu1;";
     // $result1 = $con->query($sql1);
     // $row1 = array();
@@ -56,6 +56,26 @@
     //     header ("location: schedule-viva.php?error=wrong-city&stu_city=$stu_city");
     //     die();
     // }
+    // $sql = "SELECT group_ID FROM user_stu WHERE stu_ID='$stu1';";
+    // $result = $con->query($sql);
+    // $row = $result->fetch_assoc();
+    // $id = $row['group_ID'];
+    // // echo "<script>alert($id)</script>;<>";
+    // if ($id != NULL)
+    // {
+    //     header ("location: schedule-viva.php?error=viva-exists");
+    //     die();
+    // }
+    // $sql = "SELECT group_ID FROM user_stu WHERE stu_ID='$stu2';";
+    // $result = $con->query($sql);
+    // $row = $result->fetch_assoc();
+    // $id = $row['group_ID'];
+    // if ($id != NULL)
+    // {
+    //     header ("location: schedule-viva.php?error=viva-exists");
+    //     die();
+    // }
+
     $cities = file_get_contents("cities.json");
 
     $cities_array = json_decode($cities, true);

@@ -342,7 +342,7 @@ if (!isset($_SESSION["email"]) || $_SESSION["user_type"] != 'user_adm')
                                     ?> 
                                     <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show">
                                             <span class="badge badge-pill badge-danger">Error</span>
-                                            Given student email already exixts in the database.
+                                                Given student email already exixts in the database.
                                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                             </button>

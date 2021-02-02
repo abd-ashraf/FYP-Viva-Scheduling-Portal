@@ -13,8 +13,6 @@
 	$sql = "SELECT * FROM user_stu WHERE stu_ID='$id';";
 	
 	$result = $conn->query($sql);
-	// $row = $result->fetch_assoc();
-	// echo $row['stu_ID'];
 	if (mysqli_num_rows($result) == 1)
 	{
 		header("location: add_stu.php?error=id-exists");
@@ -22,7 +20,6 @@
 	}
 	$sql = "SELECT * FROM user_stu WHERE email='$email';";
 	$result = $conn->query($sql);
-	// $row = $result->fetch_assoc();
 	if (mysqli_num_rows($result) == 1)
 	{
 		header("location: add_stu.php?error=email-exists");

@@ -1,10 +1,11 @@
-<!DOCTYPE html>
 <?php
 
-    // $stu1 = $_POST['stu1'];
-    // $stu2 = $_POST['stu2'];
-    // $group_ID = $_POST['group-id'];
-    // $city = $_POST['city'];
+    $stu1 = $_POST['stu1'];
+    $stu2 = $_POST['stu2'];
+    $group_ID = $_POST['group-id'];
+    $city = $_POST['city'];
+
+    //ERROR HANDLING!! UNCOMMENT
 
     // if ($stu1 == NULL || $stu2 == NULL || $group_ID == NULL || $city === '0')
     // {
@@ -55,7 +56,70 @@
     //     header ("location: schedule-viva.php?error=wrong-city&stu_city=$stu_city");
     //     die();
     // }
+    $cities = file_get_contents("cities.json");
+
+    $cities_array = json_decode($cities, true);
+
+    $lat = 0;
+    $lon = 0;
+
+    foreach ($cities_array['city'] as $city_center)
+    {
+        if ($city == strtoupper($city_center['name']))
+        {
+            $lat = $city_center['lat'];
+            $lon = $city_center['lon'];
+            break;
+        }
+    }
+
+    $fast_owned = array(
+        array("name"=>"LAHORE", "lat"=>31.582045, "lon"=>74.329376),
+        array("name"=>"ISLAMABAD", "lat"=>33.738045, "lon"=>73.084488),
+        array("name"=>"KARACHI", "lat"=>24.860966, "lon"=>66.990501),
+        array("name"=>"FAISALABAD", "lat"=>31.582045, "lon"=>74.329376),
+        array("name"=>"PESHAWAR", "lat"=>34.025917, "lon"=>71.560135)
+    );
+
+    $min_city = $city;
+    $min_distance = 99999999.99;
+
+    foreach ($fast_owned as $campus)
+    {
+        $new_distance = twopoints_on_earth($lat, $lon, $campus['lat'], $campus['lon']);
+        if ($new_distance < $min_distance)
+        {
+            $min_distance = $new_distance;
+            $min_city = $campus["name"];
+        }
+    }
+
+    // echo $min_city, ' ', $min_distance, '</br>';
+
+		
+	function twopoints_on_earth($latitudeFrom, $longitudeFrom, 
+									$latitudeTo, $longitudeTo) 
+	{ 
+		$long1 = deg2rad($longitudeFrom); 
+		$long2 = deg2rad($longitudeTo); 
+		$lat1 = deg2rad($latitudeFrom); 
+		$lat2 = deg2rad($latitudeTo); 
+			
+		//Haversine Formula 
+		$dlong = $long2 - $long1; 
+		$dlati = $lat2 - $lat1; 
+			
+		$val = pow(sin($dlati/2),2)+cos($lat1)*cos($lat2)*pow(sin($dlong/2),2); 
+			
+		$res = 2 * asin(sqrt($val)); 
+			
+		$radius = 3958.756; 
+			
+		return ($res*$radius); 
+	} 
+
 ?>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -90,16 +154,39 @@
   src="https://code.jquery.com/jquery-3.5.1.js"
   integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
   crossorigin="anonymous"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAg8qzb_ayd85tBny7XTrITBnVyzeTV7_M&callback=initMap"
+  type="text/javascript"></script>
+
 
     <!-- Main CSS-->
     <link href="css/theme.css" rel="stylesheet" media="all">
+    <style type="text/css">
+    #map {
+  height: 100%;
+}
+
+/* Optional: Makes the sample page fill the window. */
+#map_container {
+    height: 500px;
+    width: 500px;
+}
+    </style>
+    <script>
+    let map;
+
+    function initMap() {
+        map = new google.maps.Map(document.getElementById("map"), {
+            center: { lat: -34.397, lng: 150.644 },
+            zoom: 8,
+        });
+    }
+</script>
 </head>
 
-<script src="populate-city.js"></script>
-<!-- 
 <body class="animsition">
+
     <div class="page-wrapper">
-        <!-- HEADER MOBILE-->
+        <!-- HEADER MOBILE -->
         <header class="header-mobile d-block d-lg-none">
             <div class="header-mobile__bar">
                 <div class="container-fluid">
@@ -322,7 +409,6 @@
                 </nav>
             </div>
         </aside>
-        END MENU SIDEBAR -->
 
         <!-- PAGE CONTAINER-->
         <div class="page-container">
@@ -511,45 +597,74 @@
                                             <h3 class="text-center title-2">Viva Scheduler</h3>
                                         </div>
                                         <hr>
-                                        <form action="" method="post" novalidate="novalidate">
+                                        <form action="assign_viva.php" method="post" novalidate="novalidate">
+                                            <div class="col-12">
+                                            <div class="alert alert-success" role="alert">
+                                                <?php
+                                                echo "Nearest FAST Campus from the given location ($city) is <strong>$min_city.</strong> It can be changed as well.";
+                                                ?>
+                                            </div>
+                                            </div>
                                             <div class="row form-group">
                                                 <div class="col-12">
-                                                        <label for="cc-exp" class="control-label mb-1">Group ID</label>
-                                                        <input id="cc-exp" name="cc-exp" type="text" class="form-control"
-                                                            placeholder="Group ID" autocomplete="off" requierd> 
+                                                        <label for="cc-exp" class="control-label mb-1">Viva Station</label>
+                                                        <select name="viva_location" id="" class="form-control bg-dark text-light"> 
+                                                            <option value="<?php echo $min_city ?>"> <?php echo $min_city ?> </option>
+                                                            <option value="LAHORE">LAHORE</option>
+                                                            <option value="KARACHI">KARACHI</option>
+                                                            <option value="ISLAMABAD">ISLAMABAD</option>
+                                                            <option value="FAISALABAD">FAISALABAD</option>
+                                                            <option value="PESHAWAR">PESHAWAR</option>
+                                                        </select>
+                                                </div>
+                                            </div>
+                                            <div id="map_container">
+                                                <div id="map">
+                                                
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <div class="form-group">
+                                                        <label for="viva_date" class="control-label mb-1">Viva Date</label>
+                                                        <input id="cc-exp" name="viva_date" type="date" class="form-control"
+                                                             autocomplete="off" requierd> 
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="form-group">
+                                                        <label for="viva_time" class="control-label mb-1">Viva Time</label>
+                                                        <input id="cc-exp" name="viva_time" type="time" class="form-control"
+                                                             autocomplete="off" requierd> 
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-6">
                                                     <div class="form-group">
                                                         <label for="cc-exp" class="control-label mb-1">1st Student ID</label>
-                                                        <input id="cc-exp" name="cc-exp" type="text" class="form-control"
-                                                             placeholder="Student ID" autocomplete="off" required>
+                                                        <input id="stuID1" name="stuID1" type="text" class="form-control"
+                                                             value="<?php echo $stu1 ?>" autocomplete="off" requierd disabled> 
                                                     </div>
                                                 </div>
                                                 <div class="col-6">
                                                     <div class="form-group">
-                                                        <label for="cc-exp" class="control-label mb-1">2nd Student ID</label>
-                                                        <input id="cc-exp" name="cc-exp" type="text" class="form-control"
-                                                             placeholder="Student ID" autocomplete="off" requierd> 
+                                                        <label for="stuID2" class="control-label mb-1">2nd Student ID</label>
+                                                        <input id="cc-exp" name="stuID2" type="text" class="form-control"
+                                                            value="<?php echo $stu2 ?>" autocomplete="off" requierd disabled> 
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="row form-group">
                                                 <div class="col-12">
                                                         <label for="cc-exp" class="control-label mb-1">Group ID</label>
-                                                        <input id="cc-exp" name="cc-exp" type="text" class="form-control"
-                                                            placeholder="Group ID" autocomplete="off" requierd> 
-                                                </div>
-                                            </div>
-                                            <div class="row form-group">
-                                                <div class="col-12 col-md-12">
-                                                    <select id="locality-dropdown" name="locality" class="form-control bg-dark text-light">
-                                                    </select>
+                                                        <input id="cc-exp" name="group_ID" type="text" class="form-control"
+                                                            value="<?php echo $group_ID ?>" autocomplete="off" requierd readonly> 
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <input class="btn btn-lg btn-info btn-block" type="submit" class="col-12" value="Make Group">
+                                                <input class="btn btn-lg btn-info btn-block" type="submit" class="col-12" value="Schedule Viva">
                                             </div>
                                         </form>
                                     </div>

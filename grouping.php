@@ -1,6 +1,11 @@
 <?php
     session_start();
 
+    if (!isset($_SESSION["email"]) || $_SESSION["user_type"] != 'user_sup')
+    {
+        header("location: restricted.html");
+    }
+
     $stu1 = $_POST['stu1'];
     $stu2 = $_POST['stu2'];
     $group_ID = $_POST['group-id'];

@@ -51,8 +51,8 @@
 				$_SESSION["id"] = $data["stu_ID"];
 				$_SESSION["age"] = $data["stu_age"];
 				$_SESSION["dob"] = $data["stu_dob"];
-				$_SESSION["under_supervision"] = $data["groups_under_supervision"];
-				$_SESSION["upcomming_viva"] = $data["upcomming_viva"];
+				$_SESSION["group_ID"] = $data["group_ID"];
+				$_SESSION["supervisor_ID"] = $data["supervisor_ID"];
 
 				echo "Welcome Student <br>";   
 				

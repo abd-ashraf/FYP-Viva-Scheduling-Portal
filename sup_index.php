@@ -4,7 +4,7 @@ session_start();
 
 if (!isset($_SESSION["email"]) || $_SESSION["user_type"] != 'user_sup')
 {
-    header("location: index.html");
+    header("location: restricted.html");
 }
 
 include 'connection.php';
@@ -87,8 +87,16 @@ $comming_viva = mysqli_num_rows($result);
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
                         <li>
-                            <a href="schedule-viva.php.php">
+                            <a href="schedule-viva.php">
                                 <i class="fas fa-chart-bar"></i>Schedule Viva</a>
+                        </li>
+                        <li>
+                            <a href="reschedule-viva.php">
+                                <i class="fas fa-chart-bar"></i>Reschedule Viva</a>
+                        </li>
+                        <li>
+                            <a href="evaluations.php">
+                                <i class="fas fa-chart-bar"></i>Evaluations</a>
                         </li>
                         <li>
                             <a href="stu_info.php">
@@ -117,6 +125,14 @@ $comming_viva = mysqli_num_rows($result);
                         <li>
                             <a href="schedule-viva.php">
                                 <i class="fas fa-chart-bar"></i>Schedule Viva</a>
+                        </li>
+                        <li>
+                            <a href="reschedule-viva.php">
+                                <i class="fas fa-chart-bar"></i>Reschedule Viva</a>
+                        </li>
+                        <li>
+                            <a href="evaluations.php">
+                                <i class="fas fa-chart-bar"></i>Evaluations</a>
                         </li>
                         <li>
                             <a href="stu_info.php">

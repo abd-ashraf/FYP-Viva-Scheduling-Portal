@@ -1,3 +1,7 @@
+<?php
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -76,7 +80,7 @@
                             <label for="sup_ID" class=" form-control-label">Supervisor ID</label>
                         </div>
                         <div class="col-12 col-md-9">
-                            <input type="text" id="sup_ID" name="sup_ID" class="form-control" value='<?php echo $rows['sup_ID'] ?>'>
+                            <input type="text" id="sup_ID" name="sup_ID" class="form-control" value='<?php echo $rows['sup_ID'] ?>' readonly>
                         </div>
                     </div>
                     <br>
@@ -96,7 +100,7 @@
                             <label for="email" class=" form-control-label">Email</label>
                         </div>
                         <div class="col-12 col-md-9">
-                            <input type="email" id="email" name="email" value='<?php echo $rows['email'] ?>' class="form-control">
+                            <input type="email" id="email" name="email" value='<?php echo $rows['email'] ?>' class="form-control" readonly>
                         </div>
                     </div>
                     <br>

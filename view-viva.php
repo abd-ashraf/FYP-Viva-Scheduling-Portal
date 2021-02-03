@@ -1,8 +1,9 @@
 <?php
 
-session_start();
 include 'connection.php';
-$con=OpenCon();
+$con = OpenCon();
+
+session_start();
 
 if (!isset($_SESSION["email"]) || $_SESSION["user_type"] != 'user_stu')
 {
@@ -25,7 +26,7 @@ if (!isset($_SESSION["email"]) || $_SESSION["user_type"] != 'user_stu')
     <meta name="keywords" content="au theme template">
 
     <!-- Title Page-->
-    <title>Student Dashboard</title>
+    <title>View Viva</title>
 
     <!-- Fontfaces CSS-->
     <link href="css/font-face.css" rel="stylesheet" media="all">
@@ -95,11 +96,11 @@ if (!isset($_SESSION["email"]) || $_SESSION["user_type"] != 'user_stu')
             <div class="menu-sidebar__content js-scrollbar1">
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
-                        <li class="active">
+                        <li>
                             <a href="stu_index.php">
                                 <i class="fas fa-tachometer-alt"></i>Student Dashboard</a>
                         </li>
-                        <li>
+                        <li class="active">
                             <a href="./view-viva.php">
                                 <i class="fas fa-calendar-check"></i>View Viva</a>
                         </li>
@@ -178,94 +179,130 @@ if (!isset($_SESSION["email"]) || $_SESSION["user_type"] != 'user_stu')
                 </div>
             </header>
             <!-- HEADER DESKTOP-->
+        <!-- MAIN CONTENT-->
+        <div class="main-content">
+                
 
-            <!-- MAIN CONTENT-->
-            <div class="main-content">
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
                         <div class="row">
-                            <div class="col-md-12">
-                                <div class="overview-wrap">
-                                    <h2 class="title-1">overview</h2>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row m-t-25">
-                            <div class="col-sm-6 col-lg-3">
-                                <div class="overview-item overview-item--c1">
-                                    <div class="overview__inner">
-                                        <div class="overview-box clearfix">
-                                            <div class="icon">
-                                                <i class="zmdi zmdi-account-o"></i>
-                                            </div>
-                                            <div class="text">
-                                                <h2>
+                            <h3 style="margin-left: 30px;" class="title-3 m-b-30">
+                                <i class="zmdi zmdi-account-calendar"></i>Viva Info</h3>
+                            <div class="col-lg-12">
+                                <div class="table-responsive table--no-card m-b-30">
+                                    <table class="table table-borderless table-striped table-earning">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Location</th>
+                                                <th>Date</th>
+                                                <th>Time</th>
+                                                <th>Supervisor ID</th>
+                                                <th>Group ID</th>
+
+                                            </tr>
+                                        </thead>
+                                        <?php
+
+                                        // Prepare a select statement
+                                        $group_ID = $_SESSION['group_ID'];
+                                        $sql = "SELECT * FROM viva WHERE group_ID=$group_ID;";
+                                        $result = $con->query($sql);
+
+                                        if ($group_ID != NULL ){
+                                            if(mysqli_num_rows($result) > 0)
+                                        {
+                                            while($rows = $result->fetch_assoc())
+                                            {
+                                                ?>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td><?php echo $rows['viva_ID']; ?></td>
+                                                            <td><?php echo $rows['viva_location']; ?></td>
+                                                            <td><?php echo $rows['viva_date']; ?></td>
+                                                            <td><?php echo $rows['viva_time']; ?></td>
+                                                            <td><?php echo $rows['supervisor_ID']; ?></td>
+                                                            <td><?php echo $rows['group_ID']; ?></td>
+                                                        </tr>
+                                                    </tbody>
                                                     <?php
-                                                    if ($_SESSION['group_ID'] != NULL)
-                                                    {
-                                                        $gid = $_SESSION['group_ID'];
-                                                        $sql = "SELECT viva_date FROM viva WHERE group_ID='$gid';";
-                                                        $result = $con->query($sql);
-                                                        $data = $result->fetch_assoc();
-                                                        $date = $data['viva_date'];
-                                                        echo $date;
-                                                    }
-                                                    else {
-                                                        echo "Not Assigned!";
-                                                    }
-                                                    ?>
-                                                </h2>
-                                                <span>Viva Date</span>
-                                            </div>
-                                        </div>
-                                        <div class="overview-chart">
-                                            <canvas id="widgetChart1"></canvas>
-                                        </div>
-                                    </div>
+                                            }
+                                        }
+                                        }
+                                        else { ?>
+                                            <h3 class="text-secondary">Your viva hasn't been scheduled yet.</h3> <?php
+                                        }
+                                        ?>
+                                    </table>
                                 </div>
                             </div>
-                            <div class="col-sm-6 col-lg-3">
-                                <div class="overview-item overview-item--c2">
-                                    <div class="overview__inner">
-                                        <div class="overview-box clearfix">
-                                            <div class="icon">
-                                                <i class="zmdi zmdi-airplay"></i>
-                                            </div>
-                                            <div class="text">
-                                                <h2>
-                                                    <?php
-                                                    if ($_SESSION['group_ID'] != NULL)
-                                                    {   
-                                                        echo $_SESSION["group_ID"];
-                                                    }
-                                                    else {
-                                                        echo "Not in a group";
-                                                    }
-                                                    ?>
-                                                </h2>
-                                                <span>Group ID</span>
-                                            </div>
-                                        </div>
-                                        <div class="overview-chart">
-                                            <canvas id="widgetChart2"></canvas>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            
                         </div>
+                        <div class="container-fluid">
+                        <div class="row">
+                            <h3 style="margin-left: 30px;" class="title-3 m-b-30">
+                                <i class="zmdi zmdi-account-calendar"></i>Evaluation</h3>
+                            <div class="col-lg-12">
+                                <div class="table-responsive table--no-card m-b-30">
+                                    <table class="table table-borderless table-striped table-earning">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Group ID</th>
+                                                <th>Supervisor ID</th>
+                                                <th>Total Marks</th>
+                                                <th>Obtained Marks ID</th>
+                                                <th>Date</th>
+
+                                            </tr>
+                                        </thead>
+                                        <?php
+
+                                        $group_ID = $_SESSION['group_ID'];
+                                        $sql = "SELECT * FROM evaluations WHERE group_ID='$group_ID';";
+                                        $result = $con->query($sql);
+
+                                        if ($group_ID != NULL ){
+                                            if(mysqli_num_rows($result) > 0)
+                                            {
+                                            while($rows = $result->fetch_assoc())
+                                            {
+                                                ?>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td><?php echo $rows['evaluation_ID']; ?></td>
+                                                            <td><?php echo $rows['group_ID']; ?></td>
+                                                            <td><?php echo $rows['supervisor_ID']; ?></td>
+                                                            <td><?php echo $rows['total_marks']; ?></td>
+                                                            <td><?php echo $rows['obtained_marks']; ?></td>
+                                                            <td><?php echo $rows['evaluated_on']; ?></td>
+                                                        </tr>
+                                                    </tbody>
+                                                    <?php
+                                            }
+                                        }
+                                        }
+                                        else { ?>
+                                            <h3 class="text-secondary">This viva is yet to be evaluated.</h3> <?php
+                                        }
+                                        ?>
+                                    </table>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        
+                        
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="copyright">
-                                <p>Copyright © 2021 CICADA Tech. All rights reserved. Developed by Abdullah & Abdul Hai (<a href="https://github.com/abd-ashraf/FYP-Viva-Scheduling-Portal" target="_blank">source</a>).</p>
-
+                                    <p>Copyright © 2021 CICADA Tech. All rights reserved. Developed by Abdullah & Abdul Hai (<a href="https://github.com/abd-ashraf/FYP-Viva-Scheduling-Portal" target="_blank">source</a>).</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- END MAIN CONTENT-->
-            <!-- END PAGE CONTAINER-->
         </div>
 
     </div>

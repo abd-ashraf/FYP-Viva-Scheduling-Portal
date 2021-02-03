@@ -1,14 +1,9 @@
 <?php
-
 session_start();
-
-if (!isset($_SESSION["email"]) || $_SESSION["user_type"] != 'user_adm')
+if (!isset($_SESSION["email"]) || $_SESSION["user_type"] != 'user_sup')
 {
     header("location: restricted.html");
 }
-
-// echo $_SESSION["user_type"];
-
 ?>
 
 <!DOCTYPE html>
@@ -23,7 +18,7 @@ if (!isset($_SESSION["email"]) || $_SESSION["user_type"] != 'user_adm')
     <meta name="keywords" content="au theme template">
 
     <!-- Title Page-->
-    <title>Supervisor Info</title>
+    <title>Student Info</title>
 
     <!-- Fontfaces CSS-->
     <link href="css/font-face.css" rel="stylesheet" media="all">
@@ -208,9 +203,9 @@ if (!isset($_SESSION["email"]) || $_SESSION["user_type"] != 'user_adm')
             <div class="header-mobile__bar">
                 <div class="container-fluid">
                     <div class="header-mobile-inner">
-                        <a class="logo" href="sup_index.html">
-                            <img src="images/icon/logo.png" alt="CoolAdmin" />
-                        </a>
+                        <!-- <a class="logo" href="sup_index.html">
+                            <img src="dash-logo.png" alt="cicada" />
+                        </a> -->
                         <button class="hamburger hamburger--slider" type="button">
                             <span class="hamburger-box">
                                 <span class="hamburger-inner"></span>
@@ -222,25 +217,17 @@ if (!isset($_SESSION["email"]) || $_SESSION["user_type"] != 'user_adm')
             <nav class="navbar-mobile">
                 <div class="container-fluid">
                     <ul class="navbar-mobile__list list-unstyled">
-                        <li>
-                            <a href="adm_index.php">
-                                <i class="fas fa-tachometer-alt"></i>Admin Index Dashboard</a>
+                        <li class="has-sub">
+                            <a class="js-arrow" href="sup_index.php">
+                                <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
                         <li>
-                            <a href="stu_infoo.php">
-                                <i class="fas fa-address-book"></i>Student Info</a>
+                            <a href="schedule-viva.php.php">
+                                <i class="fas fa-chart-bar"></i>Schedule Viva</a>
                         </li>
                         <li>
-                            <a href="add_stu.php">
-                                <i class="fas fa-user-plus"></i>Add Student</a>
-                        </li>
-                        <li>
-                            <a href="sup_info.php">
-                                <i class="far fa-address-book"></i>Supervisor Info</a>
-                        </li>
-                        <li>
-                            <a href="add_sup.php">
-                                <i class="fas fa-user-plus"></i>Add Supervisor</a>
+                            <a href="stu_info.php">
+                                <i class="fas fa-address-card"></i>Student Info</a>
                         </li>
                     </ul>
                 </div>
@@ -251,32 +238,32 @@ if (!isset($_SESSION["email"]) || $_SESSION["user_type"] != 'user_adm')
         <!-- MENU SIDEBAR-->
         <aside class="menu-sidebar d-none d-lg-block">
             <div class="logo">
-                <a href="#">
-                    <img src="images/icon/logo.png" alt="Cool Admin" />
+                <a href="sup_index.php">
+                    <img src="dash-logo.png" alt="Cool Admin" />
                 </a>
             </div>
             <div class="menu-sidebar__content js-scrollbar1">
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
                         <li>
-                            <a href="adm_index.php">
-                                <i class="fas fa-tachometer-alt"></i>Admin Index Dashboard</a>
+                            <a class="js-arrow" href="sup_index.php">
+                                <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
                         <li>
-                            <a href="stu_infoo.php">
-                                <i class="fas fa-address-book"></i>Student Info</a>
+                            <a href="schedule-viva.php">
+                                <i class="fas fa-chart-bar"></i>Schedule Viva</a>
                         </li>
-                        <li>
-                            <a href="add_stu.php">
-                                <i class="fas fa-user"></i>Add Student</a>
-                        </li class="active">
                         <li class="active">
-                            <a href="sup_info.php">
-                                <i class="far fa-address-book"></i>Supervisor Info</a>
+                            <a href="reschedule-viva.php">
+                                <i class="fas fa-chart-bar"></i>Reschedule Viva</a>
                         </li>
                         <li>
-                            <a href="add_sup.php?error=no-error">
-                                <i class="fas fa-user"></i>Add Supervisor</a>
+                            <a href="evaluations.php">
+                                <i class="fas fa-chart-bar"></i>Evaluations</a>
+                        </li>
+                        <li>
+                            <a href="stu_info.php">
+                                <i class="fas fa-address-card"></i> Student Info</a>
                         </li>
                     </ul>
                 </nav>
@@ -313,7 +300,7 @@ if (!isset($_SESSION["email"]) || $_SESSION["user_type"] != 'user_adm')
                                                 </div>
                                                 <div class="content">
                                                     <h5 class="name">
-                                                        <a href="adm_index.php">
+                                                        <a href="sup_index.php">
                                                         <?php
                                                         echo $_SESSION["name"];
                                                         ?>
@@ -324,6 +311,20 @@ if (!isset($_SESSION["email"]) || $_SESSION["user_type"] != 'user_adm')
                                                         echo $_SESSION["email"];
                                                         ?>
                                                     </span>
+                                                </div>
+                                            </div>
+                                            <div class="account-dropdown__body">
+                                                <div class="account-dropdown__item">
+                                                    <a href="sup_index.php">
+                                                        <i class="zmdi zmdi-account"></i>Account</a>
+                                                </div>
+                                                <div class="account-dropdown__item">
+                                                    <a href="./schedule-viva.php">
+                                                        <i class="zmdi zmdi-calendar"></i>Scheduler</a>
+                                                </div>
+                                                <div class="account-dropdown__item">
+                                                    <a href="stu_info">
+                                                        <i class="zmdi zmdi-collection-item"></i>View Students</a>
                                                 </div>
                                             </div>
                                             <div class="account-dropdown__footer">
@@ -340,7 +341,6 @@ if (!isset($_SESSION["email"]) || $_SESSION["user_type"] != 'user_adm')
             </header>
             <!-- HEADER DESKTOP-->
 
-
             <!-- MAIN CONTENT-->
             <div class="main-content">
 
@@ -356,27 +356,27 @@ if (!isset($_SESSION["email"]) || $_SESSION["user_type"] != 'user_adm')
                         <div class="table-wrapper">
                             <div class="table-title">
                                 <div class="row">
-                                    <div class="col-sm-10"><h2><b>Supervisor Details</b></h2></div>
-                                    <div class="col-sm-2">
-                            <a class="add" title="Add" href="add_sup.php" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
-                                    </div>
+                                    <div class="col-sm-10"><h2><b>Choose a viva to reschedule</b></h2></div>
+                                    
                                 </div>
                             </div>
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Name</th>
-                                        <th>DoB</th>
-                                        <th>Groups Under Supervision</th>
-                                        <th>Upcoming Vivas</th>
-                                        <th>Actions</th>
+                                        <th>Location</th>
+                                        <th>Date</th>
+                                        <th>Time</th>
+                                        <th>Supervisor ID</th>
+                                        <th>Group ID</th>
+                                        <th>Reschedule</th>
                                     </tr>
                                 </thead>
 <?php
 
     // Prepare a select statement
-    $sql="SELECT * FROM user_sup";
+    $id = $_SESSION['id'];
+    $sql="SELECT * FROM viva WHERE supervisor_ID='$id';";
 
     $result = $conn->query($sql);
 
@@ -387,25 +387,21 @@ if (!isset($_SESSION["email"]) || $_SESSION["user_type"] != 'user_adm')
             ?>
                 <tbody>
                     <tr>
-                        <td><?php echo $rows['sup_ID']; ?></td>
-                        <td><?php echo $rows['sup_name']; ?></td>
-                        <td><?php echo $rows['sup_dob']; ?></td>
-                        <td><?php echo $rows['groups_under_supervision']; ?></td>
-                        <td><?php echo $rows['upcomming_viva']; ?></td>
+                        <td><?php echo $rows['viva_ID']; ?></td>
+                        <td><?php echo $rows['viva_location']; ?></td>
+                        <td><?php echo $rows['viva_date']; ?></td>
+                        <td><?php echo $rows['viva_time']; ?></td>
+                        <td><?php echo $rows['supervisor_ID']; ?></td>
+                        <td><?php echo $rows['group_ID']; ?></td>
                         <td>
-                            <a class="edit" title="Edit" href="sup_edit.php?id=<?php echo $rows['sup_ID']; ?>" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a> 
+                            <a class="edit" title="Edit" href="edit_viva.php?id=<?php echo $rows['viva_ID']; ?>" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a> 
 
-                            <a class="delete" title="Delete" href="sup_upd.php?id=<?php echo $rows['sup_ID']; ?>&type=delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
                         </td>
                     </tr>
                 </tbody>
                 <?php
         }
     }   
-    else
-    {
-        echo"<script>alert('Error. No Data in Table')</script>";
-    }
 
 ?>
 
@@ -414,6 +410,13 @@ if (!isset($_SESSION["email"]) || $_SESSION["user_type"] != 'user_adm')
                     </div>
                 </div>     
                 <!-- END MAIN CONTENT-->
+                <div class="row">
+                            <div class="col-md-12">
+                                <div class="copyright">
+                                    <p>Copyright © 2021 CICADA Tech. All rights reserved. Developed by Abdullah & Abdul Hai (<a href="https://github.com/abd-ashraf/FYP-Viva-Scheduling-Portal" target="_blank">source</a>).</p>
+                                </div>
+                            </div>
+                        </div>
             </div>
             <!-- END PAGE CONTAINER-->
 

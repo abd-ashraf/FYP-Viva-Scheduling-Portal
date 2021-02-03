@@ -1,3 +1,11 @@
+<?php
+session_start();
+if (!isset($_SESSION["email"]) || $_SESSION["user_type"] != 'user_sup')
+{
+    header("location: restricted.html");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -195,9 +203,9 @@
             <div class="header-mobile__bar">
                 <div class="container-fluid">
                     <div class="header-mobile-inner">
-                        <a class="logo" href="index.html">
-                            <img src="images/icon/logo.png" alt="CoolAdmin" />
-                        </a>
+                        <!-- <a class="logo" href="sup_index.html">
+                            <img src="dash-logo.png" alt="cicada" />
+                        </a> -->
                         <button class="hamburger hamburger--slider" type="button">
                             <span class="hamburger-box">
                                 <span class="hamburger-inner"></span>
@@ -210,96 +218,16 @@
                 <div class="container-fluid">
                     <ul class="navbar-mobile__list list-unstyled">
                         <li class="has-sub">
-                            <a class="js-arrow" href="#">
+                            <a class="js-arrow" href="sup_index.php">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
-                            <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
-                                <li>
-                                    <a href="index.html">Dashboard 1</a>
-                                </li>
-                                <li>
-                                    <a href="index2.html">Dashboard 2</a>
-                                </li>
-                                <li>
-                                    <a href="index3.html">Dashboard 3</a>
-                                </li>
-                                <li>
-                                    <a href="index4.html">Dashboard 4</a>
-                                </li>
-                            </ul>
                         </li>
                         <li>
-                            <a href="chart.html">
-                                <i class="fas fa-chart-bar"></i>Charts</a>
+                            <a href="schedule-viva.php.php">
+                                <i class="fas fa-chart-bar"></i>Schedule Viva</a>
                         </li>
                         <li>
-                            <a href="table.html">
-                                <i class="fas fa-table"></i>Tables</a>
-                        </li>
-                        <li>
-                            <a href="form.html">
-                                <i class="far fa-check-square"></i>Forms</a>
-                        </li>
-                        <li>
-                            <a href="calendar.html">
-                                <i class="fas fa-calendar-alt"></i>Calendar</a>
-                        </li>
-                        <li>
-                            <a href="map.html">
-                                <i class="fas fa-map-marker-alt"></i>Maps</a>
-                        </li>
-                        <li class="has-sub">
-                            <a class="js-arrow" href="#">
-                                <i class="fas fa-copy"></i>Pages</a>
-                            <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
-                                <li>
-                                    <a href="login.html">Login</a>
-                                </li>
-                                <li>
-                                    <a href="register.html">Register</a>
-                                </li>
-                                <li>
-                                    <a href="forget-pass.html">Forget Password</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="has-sub">
-                            <a class="js-arrow" href="#">
-                                <i class="fas fa-desktop"></i>UI Elements</a>
-                            <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
-                                <li>
-                                    <a href="button.html">Button</a>
-                                </li>
-                                <li>
-                                    <a href="badge.html">Badges</a>
-                                </li>
-                                <li>
-                                    <a href="tab.html">Tabs</a>
-                                </li>
-                                <li>
-                                    <a href="card.html">Cards</a>
-                                </li>
-                                <li>
-                                    <a href="alert.html">Alerts</a>
-                                </li>
-                                <li>
-                                    <a href="progress-bar.html">Progress Bars</a>
-                                </li>
-                                <li>
-                                    <a href="modal.html">Modals</a>
-                                </li>
-                                <li>
-                                    <a href="switch.html">Switchs</a>
-                                </li>
-                                <li>
-                                    <a href="grid.html">Grids</a>
-                                </li>
-                                <li>
-                                    <a href="fontawesome.html">Fontawesome Icon</a>
-                                </li>
-                                <li>
-                                    <a href="typo.html">Typography</a>
-                                </li>
-                            </ul>
+                            <a href="stu_info.php">
+                                <i class="fas fa-address-card"></i>Student Info</a>
                         </li>
                     </ul>
                 </div>
@@ -310,104 +238,32 @@
         <!-- MENU SIDEBAR-->
         <aside class="menu-sidebar d-none d-lg-block">
             <div class="logo">
-                <a href="#">
-                    <img src="images/icon/logo.png" alt="Cool Admin" />
+                <a href="sup_index.php">
+                    <img src="dash-logo.png" alt="Cool Admin" />
                 </a>
             </div>
             <div class="menu-sidebar__content js-scrollbar1">
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
-                        <li class="has-sub">
-                            <a class="js-arrow" href="#">
+                        <li>
+                            <a class="js-arrow" href="sup_index.php">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
-                            <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                <li>
-                                    <a href="index.html">Dashboard 1</a>
-                                </li>
-                                <li>
-                                    <a href="index2.html">Dashboard 2</a>
-                                </li>
-                                <li>
-                                    <a href="index3.html">Dashboard 3</a>
-                                </li>
-                                <li>
-                                    <a href="index4.html">Dashboard 4</a>
-                                </li>
-                            </ul>
+                        </li>
+                        <li>
+                            <a href="schedule-viva.php">
+                                <i class="fas fa-chart-bar"></i>Schedule Viva</a>
+                        </li>
+                        <li>
+                            <a href="reschedule-viva.php">
+                                <i class="fas fa-chart-bar"></i>Reschedule Viva</a>
+                        </li>
+                        <li>
+                            <a href="evaluations.php">
+                                <i class="fas fa-chart-bar"></i>Evaluations</a>
                         </li>
                         <li class="active">
-                            <a href="chart.html">
-                                <i class="fas fa-chart-bar"></i>Student Info</a>
-                        </li>
-                        <li>
-                            <a href="table.html">
-                                <i class="fas fa-table"></i>Tables</a>
-                        </li>
-                        <li>
-                            <a href="form.html">
-                                <i class="far fa-check-square"></i>Forms</a>
-                        </li>
-                        <li>
-                            <a href="calendar.html">
-                                <i class="fas fa-calendar-alt"></i>Calendar</a>
-                        </li>
-                        <li>
-                            <a href="map.html">
-                                <i class="fas fa-map-marker-alt"></i>Maps</a>
-                        </li>
-                        <li class="has-sub">
-                            <a class="js-arrow" href="#">
-                                <i class="fas fa-copy"></i>Pages</a>
-                            <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                <li>
-                                    <a href="login.html">Login</a>
-                                </li>
-                                <li>
-                                    <a href="register.html">Register</a>
-                                </li>
-                                <li>
-                                    <a href="forget-pass.html">Forget Password</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="has-sub">
-                            <a class="js-arrow" href="#">
-                                <i class="fas fa-desktop"></i>UI Elements</a>
-                            <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                <li>
-                                    <a href="button.html">Button</a>
-                                </li>
-                                <li>
-                                    <a href="badge.html">Badges</a>
-                                </li>
-                                <li>
-                                    <a href="tab.html">Tabs</a>
-                                </li>
-                                <li>
-                                    <a href="card.html">Cards</a>
-                                </li>
-                                <li>
-                                    <a href="alert.html">Alerts</a>
-                                </li>
-                                <li>
-                                    <a href="progress-bar.html">Progress Bars</a>
-                                </li>
-                                <li>
-                                    <a href="modal.html">Modals</a>
-                                </li>
-                                <li>
-                                    <a href="switch.html">Switchs</a>
-                                </li>
-                                <li>
-                                    <a href="grid.html">Grids</a>
-                                </li>
-                                <li>
-                                    <a href="fontawesome.html">Fontawesome Icon</a>
-                                </li>
-                                <li>
-                                    <a href="typo.html">Typography</a>
-                                </li>
-                            </ul>
+                            <a href="stu_info.php">
+                                <i class="fas fa-address-card"></i> Student Info</a>
                         </li>
                     </ul>
                 </nav>
@@ -422,132 +278,18 @@
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
                         <div class="header-wrap">
-                            <form class="form-header" action="" method="POST">
-                                <input class="au-input au-input--xl" type="text" name="search" placeholder="Search for datas &amp; reports..." />
-                                <button class="au-btn--submit" type="submit">
-                                    <i class="zmdi zmdi-search"></i>
-                                </button>
-                            </form>
-                            <div class="header-button">
-                                <div class="noti-wrap">
-                                    <div class="noti__item js-item-menu">
-                                        <i class="zmdi zmdi-comment-more"></i>
-                                        <span class="quantity">1</span>
-                                        <div class="mess-dropdown js-dropdown">
-                                            <div class="mess__title">
-                                                <p>You have 2 news message</p>
-                                            </div>
-                                            <div class="mess__item">
-                                                <div class="image img-cir img-40">
-                                                    <img src="images/icon/avatar-06.jpg" alt="Michelle Moreno" />
-                                                </div>
-                                                <div class="content">
-                                                    <h6>Michelle Moreno</h6>
-                                                    <p>Have sent a photo</p>
-                                                    <span class="time">3 min ago</span>
-                                                </div>
-                                            </div>
-                                            <div class="mess__item">
-                                                <div class="image img-cir img-40">
-                                                    <img src="images/icon/avatar-04.jpg" alt="Diane Myers" />
-                                                </div>
-                                                <div class="content">
-                                                    <h6>Diane Myers</h6>
-                                                    <p>You are now connected on message</p>
-                                                    <span class="time">Yesterday</span>
-                                                </div>
-                                            </div>
-                                            <div class="mess__footer">
-                                                <a href="#">View all messages</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="noti__item js-item-menu">
-                                        <i class="zmdi zmdi-email"></i>
-                                        <span class="quantity">1</span>
-                                        <div class="email-dropdown js-dropdown">
-                                            <div class="email__title">
-                                                <p>You have 3 New Emails</p>
-                                            </div>
-                                            <div class="email__item">
-                                                <div class="image img-cir img-40">
-                                                    <img src="images/icon/avatar-06.jpg" alt="Cynthia Harvey" />
-                                                </div>
-                                                <div class="content">
-                                                    <p>Meeting about new dashboard...</p>
-                                                    <span>Cynthia Harvey, 3 min ago</span>
-                                                </div>
-                                            </div>
-                                            <div class="email__item">
-                                                <div class="image img-cir img-40">
-                                                    <img src="images/icon/avatar-05.jpg" alt="Cynthia Harvey" />
-                                                </div>
-                                                <div class="content">
-                                                    <p>Meeting about new dashboard...</p>
-                                                    <span>Cynthia Harvey, Yesterday</span>
-                                                </div>
-                                            </div>
-                                            <div class="email__item">
-                                                <div class="image img-cir img-40">
-                                                    <img src="images/icon/avatar-04.jpg" alt="Cynthia Harvey" />
-                                                </div>
-                                                <div class="content">
-                                                    <p>Meeting about new dashboard...</p>
-                                                    <span>Cynthia Harvey, April 12,,2018</span>
-                                                </div>
-                                            </div>
-                                            <div class="email__footer">
-                                                <a href="#">See all emails</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="noti__item js-item-menu">
-                                        <i class="zmdi zmdi-notifications"></i>
-                                        <span class="quantity">3</span>
-                                        <div class="notifi-dropdown js-dropdown">
-                                            <div class="notifi__title">
-                                                <p>You have 3 Notifications</p>
-                                            </div>
-                                            <div class="notifi__item">
-                                                <div class="bg-c1 img-cir img-40">
-                                                    <i class="zmdi zmdi-email-open"></i>
-                                                </div>
-                                                <div class="content">
-                                                    <p>You got a email notification</p>
-                                                    <span class="date">April 12, 2018 06:50</span>
-                                                </div>
-                                            </div>
-                                            <div class="notifi__item">
-                                                <div class="bg-c2 img-cir img-40">
-                                                    <i class="zmdi zmdi-account-box"></i>
-                                                </div>
-                                                <div class="content">
-                                                    <p>Your account has been blocked</p>
-                                                    <span class="date">April 12, 2018 06:50</span>
-                                                </div>
-                                            </div>
-                                            <div class="notifi__item">
-                                                <div class="bg-c3 img-cir img-40">
-                                                    <i class="zmdi zmdi-file-text"></i>
-                                                </div>
-                                                <div class="content">
-                                                    <p>You got a new file</p>
-                                                    <span class="date">April 12, 2018 06:50</span>
-                                                </div>
-                                            </div>
-                                            <div class="notifi__footer">
-                                                <a href="#">All notifications</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="account-wrap">
+                            <div class="header-button d-flex justify-content-end">
+                                <div style="margin-left: 50rem" class="account-wrap">
                                     <div class="account-item clearfix js-item-menu">
                                         <div class="image">
                                             <img src="images/icon/avatar-01.jpg" alt="John Doe" />
                                         </div>
                                         <div class="content">
-                                            <a class="js-acc-btn" href="#">john doe</a>
+                                            <a class="js-acc-btn" href="#">
+                                                <?php
+                                                echo $_SESSION["name"];
+                                                ?>
+                                            </a>
                                         </div>
                                         <div class="account-dropdown js-dropdown">
                                             <div class="info clearfix">
@@ -558,27 +300,35 @@
                                                 </div>
                                                 <div class="content">
                                                     <h5 class="name">
-                                                        <a href="#">john doe</a>
+                                                        <a href="sup_index.php">
+                                                        <?php
+                                                        echo $_SESSION["name"];
+                                                        ?>
+                                                        </a>
                                                     </h5>
-                                                    <span class="email">johndoe@example.com</span>
+                                                    <span class="email">
+                                                    <?php
+                                                        echo $_SESSION["email"];
+                                                        ?>
+                                                    </span>
                                                 </div>
                                             </div>
                                             <div class="account-dropdown__body">
                                                 <div class="account-dropdown__item">
-                                                    <a href="#">
+                                                    <a href="sup_index.php">
                                                         <i class="zmdi zmdi-account"></i>Account</a>
                                                 </div>
                                                 <div class="account-dropdown__item">
-                                                    <a href="#">
-                                                        <i class="zmdi zmdi-settings"></i>Setting</a>
+                                                    <a href="./schedule-viva.php">
+                                                        <i class="zmdi zmdi-calendar"></i>Scheduler</a>
                                                 </div>
                                                 <div class="account-dropdown__item">
-                                                    <a href="#">
-                                                        <i class="zmdi zmdi-money-box"></i>Billing</a>
+                                                    <a href="stu_info">
+                                                        <i class="zmdi zmdi-collection-item"></i>View Students</a>
                                                 </div>
                                             </div>
                                             <div class="account-dropdown__footer">
-                                                <a href="#">
+                                                <a href="logout.php">
                                                     <i class="zmdi zmdi-power"></i>Logout</a>
                                             </div>
                                         </div>
@@ -589,7 +339,7 @@
                     </div>
                 </div>
             </header>
-            <!-- END HEADER DESKTOP-->
+            <!-- HEADER DESKTOP-->
 
             <!-- MAIN CONTENT-->
             <div class="main-content">
@@ -607,9 +357,7 @@
                             <div class="table-title">
                                 <div class="row">
                                     <div class="col-sm-10"><h2><b>Student Details</b></h2></div>
-                                    <div class="col-sm-2">
-                            <a class="add" title="Add" href="stu_add.php" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
-                                    </div>
+                                    
                                 </div>
                             </div>
                             <table class="table table-bordered">
@@ -656,6 +404,13 @@
                     </div>
                 </div>     
                 <!-- END MAIN CONTENT-->
+                <div class="row">
+                            <div class="col-md-12">
+                                <div class="copyright">
+                                    <p>Copyright © 2021 CICADA Tech. All rights reserved. Developed by Abdullah & Abdul Hai (<a href="https://github.com/abd-ashraf/FYP-Viva-Scheduling-Portal" target="_blank">source</a>).</p>
+                                </div>
+                            </div>
+                        </div>
             </div>
             <!-- END PAGE CONTAINER-->
 

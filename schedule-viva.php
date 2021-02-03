@@ -2,6 +2,11 @@
 <?php
     session_start();
 
+    if (!isset($_SESSION["email"]) || $_SESSION["user_type"] != 'user_sup')
+    {
+        header("location: restricted.html");
+    }
+
     include 'connection.php';
     $conn = OpenCon();
 
@@ -103,6 +108,14 @@
                         <li class="active">
                             <a href="schedule-viva.php">
                                 <i class="fas fa-chart-bar"></i>Schedule Viva</a>
+                        </li>
+                        <li>
+                            <a href="reschedule-viva.php">
+                                <i class="fas fa-chart-bar"></i>Reschedule Viva</a>
+                        </li>
+                        <li>
+                            <a href="evaluations.php">
+                                <i class="fas fa-chart-bar"></i>Evaluations</a>
                         </li>
                         <li>
                             <a href="stu_info.php">

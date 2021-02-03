@@ -1,8 +1,10 @@
 <?php
 
-send_mail();
+$group_ID='4444';
 
-function send_mail(){
+show_var($group_ID, '111', '222', 'LAHORE', '2', '2');
+
+function send_mail($group_ID, $stu1, $stu2, $viva_location, $date, $time){
     ini_set( 'display_errors', 1 );
     error_reporting( E_ALL );
 
@@ -38,7 +40,7 @@ function send_mail(){
 							<th>Group ID</th><th>Student ID 1</th><th>Student ID 2</th><th>Viva Date and Time</th><th>Viva Station</th>
 						</tr>
 						<tr>
-							<td>1</td> <td>111</td> <td>222</td> <td>acha din hy</td> <td>Loonaywala</td>
+							<td><?php echo '$group_ID'; ?></td> <td><?php echo '$stu1'; ?></td> <td><?php echo '$stu2'; ?></td> <td><?php echo '$date -- $time'; ?></td> <td><?php echo '$viva_location'; ?></td>
 						</tr>
 					</table>
 		</body>
@@ -56,6 +58,13 @@ function send_mail(){
     {
     	echo "The email message was not sent.";
     }
+}
+
+function show_var($group_ID, $stu1, $stu2, $viva_location, $date, $time)
+{
+	echo "$group_ID <br>";
+	echo "$date <br>";
+	echo "$time <br>";
 }
 
 ?>

@@ -6,10 +6,10 @@ function send_mail($group_ID, $stu1, $stu2, $viva_location, $date, $time, $con){
 
     $from = "f180300@cfd.nu.edu.pk";
 
-    $stu1email=ret_email($stu1,$con);
-    $stu2email=ret_email($stu2,$con);
+     $stu1email=ret_email($stu1,$con);
+     $stu2email=ret_email($stu2,$con);
 
-	$to = "$stu1email , $stu2email";
+	$to = "$stu1email, $stu2email";
 
     $subject = "FYP Viva Notifier";
 
@@ -39,7 +39,7 @@ function send_mail($group_ID, $stu1, $stu2, $viva_location, $date, $time, $con){
 							<th>Group ID</th><th>Student ID 1</th><th>Student ID 2</th><th>Viva Date and Time</th><th>Viva Station</th>
 						</tr>
 						<tr>
-							<td><?php echo '$group_ID'; ?></td> <td><?php echo '$stu1'; ?></td> <td><?php echo '$stu2'; ?></td> <td><?php echo '$date -- $time'; ?></td> <td><?php echo '$viva_location'; ?></td>
+							<td>$group_ID</td> <td>$stu1</td> <td>$stu2</td> <td>$date $time</td> <td>$viva_location</td>
 						</tr>
 					</table>
 		</body>
